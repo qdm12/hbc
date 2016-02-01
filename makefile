@@ -58,15 +58,17 @@ HElib : ntl gmp
 	cd HElib/src && make check
 	cd HElib/src && make test
 	
-HEapp : main.cpp
+HEapp :
 	$(info Building custom code from main.cpp...)
 	$(info )
 ifeq ($(shell uname -o),Cygwin)
 	$(info Cygwin detected, installing modules if necessary.)
 	apt-cyg install git gcc-g++
 endif
+	rm -fr myHE
 	git clone https://github.com/qdm12/myHE.git
 	cd myHE && g++ main.cpp ../HELib/src/fhe.a -I ../HELib/src -o ../HEapp -L/usr/local/lib -lntl -lgmp -lm
+	./HEapp.exe
 
 test : test.cpp
 	g++ test.cpp -o test
