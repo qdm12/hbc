@@ -102,15 +102,15 @@ _This could be especially useful for Mac OSX where the Makefile may not work_
     * Copy the source files `cp ./hbc_git/* ./source`
     * You will then need to compile all the files into objects (or simply run `make HE` from the Makefile provided)
        * Create an _objects_ folder `mkdir -p objects`
-       * Compile the API `g++ -c source/he.cpp -I HELib/src -o objects/he.o`
+       * Compile the API `g++ -c source/he.cpp -I HElib/src -o objects/he.o`
        * Compile the helper functions `g++ -c source/helper_functions.cpp -o objects/helper_functions.o`
        * Compile the various tests
-          * `g++ -c source/test_gates.cpp -I HELib/src -o objects/test_gates.o`
-          * `g++ -c source/test_circ_comb.cpp -I HELib/src -o objects/test_circ_comb.o`
-          * `g++ -c source/test_circ_seq.cpp -I HELib/src -o objects/test_circ_seq.o`
-          * `g++ -c source/test_circ_arithm.cpp -I HELib/src -o objects/test_circ_arithm.o`
-       * Compile the main.cpp source file `g++ -c source/main.cpp -I HELib/src -o objects/main.o`
-       * Compile the objects into HEapp `g++ objects/*.o HELib/src/fhe.a -o HEapp -L/usr/local/lib -lntl -lgmp -lm`
+          * `g++ -c source/test_gates.cpp -I HElib/src -o objects/test_gates.o`
+          * `g++ -c source/test_circ_comb.cpp -I HElib/src -o objects/test_circ_comb.o`
+          * `g++ -c source/test_circ_seq.cpp -I HElib/src -o objects/test_circ_seq.o`
+          * `g++ -c source/test_circ_arithm.cpp -I HElib/src -o objects/test_circ_arithm.o`
+       * Compile the main.cpp source file `g++ -c source/main.cpp -I HElib/src -o objects/main.o`
+       * Compile the objects into HEapp `g++ objects/*.o HElib/src/fhe.a -o HEapp -L/usr/local/lib -lntl -lgmp -lm`
 8. Run the program with `./HEapp` & Enjoy !
 9. Please refer to my long but complete report on this project, available in the repository.
 10. You're welcome to contribute to this repository if you find any better circuits or other circuits and implement them !
