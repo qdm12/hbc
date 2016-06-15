@@ -124,7 +124,7 @@ HEapp : objects/he.o objects/helper_functions.o \
 	g++ objects/*.o HElib/src/fhe.a -o HEapp -L/usr/local/lib -lntl -lgmp -lm
 	
 HE : setup_gcc HEapp
-	./HEapp.exe
+	./HEapp
 	
 download : 
 	rm -fr hbc_git
