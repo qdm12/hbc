@@ -3,14 +3,14 @@
 _This project was developed as my Master final year project at Imperial College London._
 
 ## What is it in **one** line? ##
-### It is an API of binary operations such as binary comparisons or binary divisions using the library HElib. ###
+It is an **API** of binary operations such as binary comparisons or binary divisions using the library _HElib_.
 
 ## What is in there? ##
-The core API is in the file _he.cpp_, the main code is in _main.cpp_, some other classes are in _helper_functions.cpp_ and the rest are unit tests and timing tests for the homomorphic binary operations implemented. There is a Makefile to setup everything. My report is there to server as documentation for now.
+The core API is in the file _he.cpp_, the main code is in _main.cpp_, some other classes are in __helper_functions.cpp__ and the rest are unit tests and timing tests for the homomorphic binary operations implemented. There is a _makefile_ to setup everything. My report is there to server as documentation for instance.
 
 ## What does it run ? ##
-By default, it runs a set of unit tests on all the circuits implemented (initiated from main.cpp).
-You can change the tests, or main.cpp or whatever and it should still work.
+By default, it runs a set of unit tests on all the circuits implemented (initiated from _main.cpp_).
+You can change the tests, or _main.cpp_ or whatever and it should still work.
 
 ## How do I run it? ##
 You will need several libraries.
@@ -21,7 +21,6 @@ The final executable file is HEapp in the root directory which can be run with `
 
 ## Manual Setup ##
 _This could be especially useful for Mac OSX where the Makefile may not work_
-
 0. You should already have gcc-g++ or g++ installed.
 1. Install m4 `apt install m4`
 2. Install perl `apt install perl`
@@ -73,7 +72,6 @@ _This could be especially useful for Mac OSX where the Makefile may not work_
 
 ## Using the Makefile ##
 _The makefile only supports Cygwin and Linux for instance, it has been untested on Mac OSX._
-
 ### Cygwin & Windows ###
 **Due to permission restrictions on Windows operating systems**, the following modules have to be installed manually before launching the makefile (by using the Cygwin installer):
    * git
@@ -87,6 +85,7 @@ When the makefile is launched, note that the following modules will be installed
 
 For installing the project the first time, the Makefile works without the other source codes.
 Just move the Makefile in an empty directory and `cd` to it.
+
 1. To download, compile and install HElib and other libraries: `make HElib`
 2. To download, compile and run the project code: `make project`
 3. To re-compile the project _source_ directory with your modifications: `make HE`
@@ -103,6 +102,7 @@ When the makefile is launched, note that the following modules will be installed
 
 For installing the project the first time, the Makefile works without the other source codes.
 Just move the Makefile in an empty directory and `cd` to it.
+
 1. To download, compile and install HElib and other libraries: `make HElib`
 2. To download, compile and run the project code: `make project`
 3. To re-compile the project _source_ directory with your modifications and run HEapp: `make HE`
