@@ -19,8 +19,50 @@ In both scenarios, you will need the module **make**.
 The final executable file is HEapp in the root directory which can be run with `./HEapp`.
 
 
+## Using the Makefile ##
+_The makefile only supports Cygwin and Linux for instance, it has been untested on Mac OSX._
+### Cygwin & Windows ###
+**Due to permission restrictions on Windows operating systems**, the following modules have to be installed manually before launching the makefile (by using the Cygwin installer):
+   * git
+   * gcc-g++
+
+When the makefile is launched, note that the following modules will be installed:
+   * apt-cyg
+   * curl
+   * m4
+   * perl
+
+For installing the project the first time, the Makefile works without the other source codes.
+Just move the Makefile in an empty directory and `cd` to it.
+
+1. To download, compile and install HElib and other libraries: `make HElib`
+2. To download, compile and run the project code: `make project`
+3. To re-compile the project _source_ directory with your modifications: `make HE`
+4. You can try `make help` for more information
+**NOTE:** The project source code is now in the _./source_ directory, and the GitHub repository is in __./hbc_git__.
+
+### Linux ###
+When the makefile is launched, note that the following modules will be installed:
+   * git
+   * g++
+   * curl
+   * m4
+   * perl
+
+For installing the project the first time, the Makefile works without the other source codes.
+Just move the Makefile in an empty directory and `cd` to it.
+
+1. To download, compile and install HElib and other libraries: `make HElib`
+2. To download, compile and run the project code: `make project`
+3. To re-compile the project _source_ directory with your modifications and run HEapp: `make HE`
+4. You can try `make help` for more information.
+**NOTE:** The project source code is now in the _./source_ directory, and the GitHub repository is in __./hbc_git__.
+
+
+
 ## Manual Setup ##
 _This could be especially useful for Mac OSX where the Makefile may not work_
+
 0. You should already have gcc-g++ or g++ installed.
 1. Install m4 `apt install m4`
 2. Install perl `apt install perl`
@@ -68,46 +110,6 @@ _This could be especially useful for Mac OSX where the Makefile may not work_
 9. Please refer to my long but complete report on this project, available in the repository.
 10. You're welcome to contribute to this repository if you find any better circuits or other circuits and implement them !
 
-
-
-## Using the Makefile ##
-_The makefile only supports Cygwin and Linux for instance, it has been untested on Mac OSX._
-### Cygwin & Windows ###
-**Due to permission restrictions on Windows operating systems**, the following modules have to be installed manually before launching the makefile (by using the Cygwin installer):
-   * git
-   * gcc-g++
-
-When the makefile is launched, note that the following modules will be installed:
-   * apt-cyg
-   * curl
-   * m4
-   * perl
-
-For installing the project the first time, the Makefile works without the other source codes.
-Just move the Makefile in an empty directory and `cd` to it.
-
-1. To download, compile and install HElib and other libraries: `make HElib`
-2. To download, compile and run the project code: `make project`
-3. To re-compile the project _source_ directory with your modifications: `make HE`
-4. You can try `make help` for more information
-**NOTE:** The project source code is now in the _./source_ directory, and the GitHub repository is in __./hbc_git__.
-
-### Linux ###
-When the makefile is launched, note that the following modules will be installed:
-   * git
-   * g++
-   * curl
-   * m4
-   * perl
-
-For installing the project the first time, the Makefile works without the other source codes.
-Just move the Makefile in an empty directory and `cd` to it.
-
-1. To download, compile and install HElib and other libraries: `make HElib`
-2. To download, compile and run the project code: `make project`
-3. To re-compile the project _source_ directory with your modifications and run HEapp: `make HE`
-4. You can try `make help` for more information.
-**NOTE:** The project source code is now in the _./source_ directory, and the GitHub repository is in __./hbc_git__.
 
 
 ## Abstract ##
