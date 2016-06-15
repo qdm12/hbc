@@ -106,7 +106,7 @@ _This could be especially useful for Mac OSX where the Makefile may not work_
           * `g++ -c source/test_circ_arithm.cpp -I HELib/src -o objects/test_circ_arithm.o`
        * Compile the main.cpp source file `g++ -c source/main.cpp -I HELib/src -o objects/main.o`
        * Compile the objects into HEapp `g++ objects/*.o HELib/src/fhe.a -o HEapp -L/usr/local/lib -lntl -lgmp -lm`
-8. Run the program with ./HEapp & Enjoy !
+8. Run the program with `./HEapp` & Enjoy !
 9. Please refer to my long but complete report on this project, available in the repository.
 10. You're welcome to contribute to this repository if you find any better circuits or other circuits and implement them !
 
