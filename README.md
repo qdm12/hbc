@@ -39,6 +39,7 @@ Just move the Makefile in an empty directory and `cd` to it.
 2. To download, compile and run the project code: `make project`
 3. To re-compile the project _source_ directory with your modifications: `make HE`
 4. You can try `make help` for more information
+
 **NOTE:** The project source code is now in the _./source_ directory, and the GitHub repository is in __./hbc_git__.
 
 ### Linux ###
@@ -56,6 +57,7 @@ Just move the Makefile in an empty directory and `cd` to it.
 2. To download, compile and run the project code: `make project`
 3. To re-compile the project _source_ directory with your modifications and run HEapp: `make HE`
 4. You can try `make help` for more information.
+
 **NOTE:** The project source code is now in the _./source_ directory, and the GitHub repository is in __./hbc_git__.
 
 
