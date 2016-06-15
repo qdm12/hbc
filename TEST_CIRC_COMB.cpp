@@ -66,9 +66,7 @@ bool TEST_CIRC_COMB::test_HFADDER(){
 		cout << className() << ": Running " << __FUNCTION__ << "..." << endl;
 	}
 	make_copies();
-	t.start();
 	he.HFADDER(k[0],k[1]);
-	t.end();
 	vector< vector<long> > v_out = he.decryptNbits(k);
 	for (int i = 0; i < nslots; i++){
 		if((v_out[0][i] != (v_in[0][i] ^ v_in[1][i])) &&
@@ -83,9 +81,7 @@ bool TEST_CIRC_COMB::test_FLADDER(){
 		cout << className() << ": Running " << __FUNCTION__ << "..." << endl;
 	}
 	make_copies();
-	t.start();
 	he.FLADDER(k[0],k[1],k[2]);
-	t.end();
 	vector< vector<long> > v_out = he.decryptNbits(k);
 	for (int i = 0; i < nslots; i++){
 		if((v_out[0][i] != ((v_in[0][i] ^ v_in[1][i]) ^ v_in[2][i])) &&
@@ -100,9 +96,7 @@ bool TEST_CIRC_COMB::test_HFSUBER(){
 		cout << className() << ": Running " << __FUNCTION__ << "..." << endl;
 	}
 	make_copies();
-	t.start();
 	he.HFSUBER(k[0],k[1]);
-	t.end();
 	vector< vector<long> > v_out = he.decryptNbits(k);
 	for (int i = 0; i < nslots; i++){
 		if((v_out[0][i] != (v_in[0][i] ^ v_in[1][i])) &&
@@ -117,9 +111,7 @@ bool TEST_CIRC_COMB::test_FLSUBER(){
 		cout << className() << ": Running " << __FUNCTION__ << "..." << endl;
 	}
 	make_copies();
-	t.start();
 	he.FLSUBER(k[0],k[1],k[2]);
-	t.end();
 	vector< vector<long> > v_out = he.decryptNbits(k);
 	for (int i = 0; i < nslots; i++){
 		if((v_out[0][i] != ((v_in[0][i] ^ v_in[1][i]) ^ v_in[2][i])) &&
@@ -134,9 +126,7 @@ bool TEST_CIRC_COMB::test_HFEQUAL(){
 		cout << className() << ": Running " << __FUNCTION__ << "..." << endl;
 	}
 	make_copies();
-	t.start();
 	he.HFEQUAL(k[0],k[1]);
-	t.end();
 	vector< vector<long> > v_out = he.decryptNbits(k);
 	for (int i = 0; i < nslots; i++){
 		if(v_out[0][i] != (v_in[0][i] == v_in[1][i])){
@@ -150,9 +140,7 @@ bool TEST_CIRC_COMB::test_FLEQUAL(){
 		cout << className() << ": Running " << __FUNCTION__ << "..." << endl;
 	}
 	make_copies();
-	t.start();
 	he.FLEQUAL(k[0],k[1],k[2]);
-	t.end();
 	vector< vector<long> > v_out = he.decryptNbits(k);
 	for (int i = 0; i < nslots; i++){
 		if(v_out[0][i] != ((v_in[0][i] == v_in[1][i]) && v_in[2][i])){
@@ -166,9 +154,7 @@ bool TEST_CIRC_COMB::test_SMALLER(){
 		cout << className() << ": Running " << __FUNCTION__ << "..." << endl;
 	}
 	make_copies();
-	t.start();
 	he.SMALLER(k[0],k[1]);
-	t.end();
 	vector< vector<long> > v_out = he.decryptNbits(k);
 	for (int i = 0; i < nslots; i++){
 		if(v_out[0][i] != (v_in[0][i] < v_in[1][i])){
@@ -182,9 +168,7 @@ bool TEST_CIRC_COMB::test_HFCMP(){
 		cout << className() << ": Running " << __FUNCTION__ << "..." << endl;
 	}
 	make_copies();
-	t.start();
 	he.HFCMP(k[0],k[1]);
-	t.end();
 	vector< vector<long> > v_out = he.decryptNbits(k);
 	for (int i = 0; i < nslots; i++){
 		if((v_out[0][i] != (v_in[0][i] == v_in[1][i])) ||
@@ -203,9 +187,7 @@ bool TEST_CIRC_COMB::test_FLCMP(){
 	temp = vector<long>(nslots,1);
 	mkt k_ones = he.encrypt(temp);
 	make_copies();
-	t.start();
 	he.FLCMP(k[0],k[1], k_zeros, k_zeros);
-	t.end();
 	//always smaller, so outputs should be NOT EQ and NOT GRE (0, 0)
 	vector< vector<long> > v_out = he.decryptNbits(k);
 	for (int i = 0; i < nslots; i++){
@@ -242,9 +224,7 @@ bool TEST_CIRC_COMB::test_MUX(){
 		cout << className() << ": Running " << __FUNCTION__ << "..." << endl;
 	}
 	make_copies();
-	t.start();
 	he.MUX(k[0],k[1],k[2]);
-	t.end();
 	vector< vector<long> > v_out = he.decryptNbits(k);
 	for (int i = 0; i < nslots; i++){
 		if (v_in[2][i] && (v_out[0][i] != v_in[0][i])){

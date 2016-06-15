@@ -10,7 +10,6 @@ class TEST_CIRC_COMB {
 		Errors test();
 	private:
 		const string className();
-		Timing t;
 		bool debug;
 		unsigned bits;
 		long nslots;
