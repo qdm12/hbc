@@ -129,7 +129,7 @@ HE : setup_gcc HEapp
 download : 
 	git clone https://github.com/qdm12/hbc.git ./hbc_git
 	mkdir -p source
-	cp ./hbc_git/source/* ./source
+	cp ./hbc_git/* ./source
 	
 project : download HE
 
