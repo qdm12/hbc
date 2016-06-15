@@ -1,4 +1,4 @@
-# hbc
+# Homomorphic binary circuits - _hbc_ #
 
 _This project was developed as my Master final year project at Imperial College London._
 
