@@ -3,17 +3,24 @@
 _This project was developed as my Master final year project at Imperial College London._
 
 ## What is it in **one** line? ##
-### It is an API of binary operations such as binary comparisons or binary divisions using the library HElib.
+### It is an API of binary operations such as binary comparisons or binary divisions using the library HElib. ###
 
 ## What is in there? ##
-The core API is in the file _he.cpp_, the main code is in _main.cpp_, some other classes are in _helper_functions.cpp_ and the rest are unit tests and timing tests for the homomorphic binary operations implemented. 
+The core API is in the file _he.cpp_, the main code is in _main.cpp_, some other classes are in _helper_functions.cpp_ and the rest are unit tests and timing tests for the homomorphic binary operations implemented. There is a Makefile to setup everything. My report is there to server as documentation for now.
+
+## What does it run ? ##
+By default, it runs a set of unit tests on all the circuits implemented (initiated from main.cpp).
+You can change the tests, or main.cpp or whatever and it should still work.
 
 ## How do I run it? ##
-
 You will need several libraries.
 You can either use the _Makefile_ following the instructions in the **Makefile** section or do it manually.
 In both scenarios, you will need the module **make**.
-To do it manually:
+The final executable file is HEapp in the root directory which can be run with `./HEapp`.
+
+
+## Manual Setup ##
+_This could be especially useful for Mac OSX where the Makefile may not work_
 
 0. You should already have gcc-g++ or g++ installed.
 1. Install m4 `apt install m4`
@@ -59,11 +66,48 @@ To do it manually:
        * Compile the main.cpp source file `g++ -c source/main.cpp -I HELib/src -o objects/main.o`
        * Compile the objects into HEapp `g++ objects/*.o HELib/src/fhe.a -o HEapp -L/usr/local/lib -lntl -lgmp -lm`
 8. Run the program with ./HEapp & Enjoy !
-9. Please refer to my long but complete report on this project, available [here](www.google.com)
+9. Please refer to my long but complete report on this project, available in the repository.
 10. You're welcome to contribute to this repository if you find any better circuits or other circuits and implement them !
 
+
+
 ## Using the Makefile ##
-XXX to do
+_The makefile only supports Cygwin and Linux for instance, it has been untested on Mac OSX._
+
+### Cygwin & Windows ###
+**Due to permission restrictions on Windows operating systems**, the following modules have to be installed manually before launching the makefile (by using the Cygwin installer):
+   * git
+   * gcc-g++
+
+When the makefile is launched, note that the following modules will be installed:
+   * apt-cyg
+   * curl
+   * m4
+   * perl
+
+For installing the project the first time, the Makefile works without the other source codes.
+Just move the Makefile in an empty directory and `cd` to it.
+1. To download, compile and install HElib and other libraries: `make HElib`
+2. To download, compile and run the project code: `make project`
+3. To re-compile the project _source_ directory with your modifications: `make HE`
+4. You can try `make help` for more information
+**NOTE:** The project source code is now in the _./source_ directory, and the GitHub repository is in __./hbc_git__.
+
+### Linux ###
+When the makefile is launched, note that the following modules will be installed:
+   * git
+   * g++
+   * curl
+   * m4
+   * perl
+
+For installing the project the first time, the Makefile works without the other source codes.
+Just move the Makefile in an empty directory and `cd` to it.
+1. To download, compile and install HElib and other libraries: `make HElib`
+2. To download, compile and run the project code: `make project`
+3. To re-compile the project _source_ directory with your modifications and run HEapp: `make HE`
+4. You can try `make help` for more information.
+**NOTE:** The project source code is now in the _./source_ directory, and the GitHub repository is in __./hbc_git__.
 
 
 ## Abstract ##
