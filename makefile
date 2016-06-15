@@ -79,29 +79,29 @@ objects/helper_functions.o : source/helper_functions.cpp source/helper_functions
 	mkdir -p objects
 	g++ -c source/helper_functions.cpp -o objects/helper_functions.o
 	
-objects/test_gates.o : source/test_gates.cpp source/test_gates.h
+objects/test_gates.o : source/TEST_GATES.cpp source/TEST_GATES.h
 	$(info )
 	$(info Building test_gates.o...)
 	mkdir -p objects
-	g++ -c source/test_gates.cpp -I HElib/src -o objects/test_gates.o
+	g++ -c source/TEST_GATES.cpp -I HElib/src -o objects/test_gates.o
 	
-objects/test_circ_comb.o : source/test_circ_comb.cpp source/test_circ_comb.h
+objects/test_circ_comb.o : source/TEST_CIRC_COMB.cpp source/TEST_CIRC_COMB.h
 	$(info )
 	$(info Building test_circ_comb.o...)
 	mkdir -p objects
-	g++ -c source/test_circ_comb.cpp -I HElib/src -o objects/test_circ_comb.o
+	g++ -c source/TEST_CIRC_COMB.cpp -I HElib/src -o objects/test_circ_comb.o
 	
-objects/test_circ_seq.o : source/test_circ_seq.cpp source/test_circ_seq.h
+objects/test_circ_seq.o : source/TEST_CIRC_SEQ.cpp source/TEST_CIRC_SEQ.h
 	$(info )
 	$(info Building test_circ_seq.o...)
 	mkdir -p objects
-	g++ -c source/test_circ_seq.cpp -I HElib/src -o objects/test_circ_seq.o
+	g++ -c source/TEST_CIRC_SEQ.cpp -I HElib/src -o objects/test_circ_seq.o
 	
-objects/test_circ_arithm.o : source/test_circ_arithm.cpp source/test_circ_arithm.h
+objects/test_circ_arithm.o : source/TEST_CIRC_ARITHM.cpp source/TEST_CIRC_ARITHM.h
 	$(info )
 	$(info Building test_circ_arithm.o...)
 	mkdir -p objects
-	g++ -c source/test_circ_arithm.cpp -I HElib/src -o objects/test_circ_arithm.o
+	g++ -c source/TEST_CIRC_ARITHM.cpp -I HElib/src -o objects/test_circ_arithm.o
 	
 objects/he.o : source/he.cpp source/he.h
 	$(info )
