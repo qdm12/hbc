@@ -83,37 +83,37 @@ objects/test_gates.o : source/test_gates.cpp source/test_gates.h
 	$(info )
 	$(info Building test_gates.o...)
 	mkdir -p objects
-	g++ -c source/test_gates.cpp -I HELib/src -o objects/test_gates.o
+	g++ -c source/test_gates.cpp -I HElib/src -o objects/test_gates.o
 	
 objects/test_circ_comb.o : source/test_circ_comb.cpp source/test_circ_comb.h
 	$(info )
 	$(info Building test_circ_comb.o...)
 	mkdir -p objects
-	g++ -c source/test_circ_comb.cpp -I HELib/src -o objects/test_circ_comb.o
+	g++ -c source/test_circ_comb.cpp -I HElib/src -o objects/test_circ_comb.o
 	
 objects/test_circ_seq.o : source/test_circ_seq.cpp source/test_circ_seq.h
 	$(info )
 	$(info Building test_circ_seq.o...)
 	mkdir -p objects
-	g++ -c source/test_circ_seq.cpp -I HELib/src -o objects/test_circ_seq.o
+	g++ -c source/test_circ_seq.cpp -I HElib/src -o objects/test_circ_seq.o
 	
 objects/test_circ_arithm.o : source/test_circ_arithm.cpp source/test_circ_arithm.h
 	$(info )
 	$(info Building test_circ_arithm.o...)
 	mkdir -p objects
-	g++ -c source/test_circ_arithm.cpp -I HELib/src -o objects/test_circ_arithm.o
+	g++ -c source/test_circ_arithm.cpp -I HElib/src -o objects/test_circ_arithm.o
 	
 objects/he.o : source/he.cpp source/he.h
 	$(info )
 	$(info Building he.o...)
 	mkdir -p objects
-	g++ -c source/he.cpp -I HELib/src -o objects/he.o
+	g++ -c source/he.cpp -I HElib/src -o objects/he.o
 	
 objects/main.o: source/main.cpp
 	$(info )
 	$(info Building main.o...)
 	mkdir -p objects
-	g++ -c source/main.cpp -I HELib/src -o objects/main.o
+	g++ -c source/main.cpp -I HElib/src -o objects/main.o
 	
 HEapp : objects/he.o objects/helper_functions.o \
 		objects/test_gates.o objects/test_circ_comb.o objects/test_circ_seq.o \
@@ -121,12 +121,13 @@ HEapp : objects/he.o objects/helper_functions.o \
 		objects/main.o
 	$(info )
 	$(info Building HEapp...)
-	g++ objects/*.o HELib/src/fhe.a -o HEapp -L/usr/local/lib -lntl -lgmp -lm
+	g++ objects/*.o HElib/src/fhe.a -o HEapp -L/usr/local/lib -lntl -lgmp -lm
 	
 HE : setup_gcc HEapp
 	./HEapp.exe
 	
 download : 
+	rm -fr hbc_git
 	git clone https://github.com/qdm12/hbc.git ./hbc_git
 	mkdir -p source
 	cp ./hbc_git/* ./source
