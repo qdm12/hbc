@@ -29,11 +29,11 @@ void TEST_CIRC_ARITHM::t_end(string name){
 
 Errors TEST_CIRC_ARITHM::test(){
 	Errors e("TEST_CIRC_ARITHM");
-	//e.add("MULTIPLY arithmetic circuit", test_MULTIPLY());
+	e.add("MULTIPLY arithmetic circuit", test_MULTIPLY());
 	e.add("FAST AVERAGES arithmetic circuit", test_FAVERAGES());
 	if (bits > 1){
-		//e.add("DIVIDE arithmetic circuit", test_DIVIDE());
-		//e.add("AVERAGES arithmetic circuit", test_AVERAGES());
+		e.add("DIVIDE arithmetic circuit", test_DIVIDE());
+		e.add("AVERAGES arithmetic circuit", test_AVERAGES());
 	}
 	return e;
 }

@@ -13,7 +13,7 @@ int main(int argc, char **argv)
 	Errors e("test");
 	
 	
-	/*TEST_GATES tg;
+	TEST_GATES tg;
 	e = tg.test();
 	e.display();
 	
@@ -23,16 +23,12 @@ int main(int argc, char **argv)
 
 	TEST_CIRC_SEQ t_sequential(8, true);
 	e = t_sequential.test();
-	e.display();*/
-	
-	//usually max 6 bits for those
-	TEST_CIRC_ARITHM t_arithmetic(7, true);
-	e = t_arithmetic.test();
 	e.display();
 	
-	
-
-	
+	//max 3 bits because of average circuit (can be disabled thought)
+	TEST_CIRC_ARITHM t_arithmetic(3, true);
+	e = t_arithmetic.test();
+	e.display();
 	
     t_all.end();
 	cout << "======================================\n";
