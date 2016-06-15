@@ -77,6 +77,7 @@ _This could be especially useful for Mac OSX where the Makefile may not work_
     * Install it `make install`
     * Optionally, check it `make check`
     * **For Cygwin**, `cp -f /usr/local/lib/libgmp.* /usr/XXXXX-pc-cygwin/lib/` where XXXXX is your CPU architecture.
+    * Go back to main directory `cd ..`
 4. Install NTL:
     * Download it [here](http://www.shoup.net/ntl/ntl-9.6.2.tar.gz)
     * Extract it `tar xf ntl-9.6.2.tar.gz`
@@ -84,6 +85,7 @@ _This could be especially useful for Mac OSX where the Makefile may not work_
     * Configure it `./configure NTL_GMP_LIP=on`
     * Make it `make`
     * Install it `make install`
+    * Go back to main directory `cd ..`
 5. Install HElib
     * Install git `apt install git`
     * Clone it `git clone https://github.com/shaih/HElib.git`
@@ -92,11 +94,12 @@ _This could be especially useful for Mac OSX where the Makefile may not work_
     * Make it `make`
     * Check it `make check`
     * Optionally test it `make test`
+    * Go back to main directory `cd ..`
 6. HElib is now ready to be used.
 7. Download and compile this project
     * Clone it `git https://github.com/qdm12/hbc.git ./hbc_git`
     * Create a source folder `mkdir -p source` at the root (where you should be)
-    * Copy the source files `cp ./hbc_git/source/* ./source`
+    * Copy the source files `cp ./hbc_git/* ./source`
     * You will then need to compile all the files into objects (or simply run `make HE` from the Makefile provided)
        * Create an _objects_ folder `mkdir -p objects`
        * Compile the API `g++ -c source/he.cpp -I HELib/src -o objects/he.o`
