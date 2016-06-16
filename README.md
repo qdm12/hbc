@@ -20,7 +20,8 @@ The report is contained in the repository and is also available [here](https://w
 ## How do I run it? ##
 You will need several libraries.
 You can either use the _Makefile_ following the instructions in the **Makefile** section or do it manually.
-In both scenarios, you will need the module **make**.
+For Mac OSX systems, refer to the **Mac OSX** section.
+In all scenarios, you will need the module **make**.
 The final executable file is HEapp in the root directory which can be run with `./HEapp`.
 
 
@@ -119,6 +120,16 @@ _This could be especially useful for Mac OSX where the Makefile may not work_
 9. Please refer to my long but complete report on this project, available in the repository.
 10. You're welcome to contribute to this repository if you find any better circuits or other circuits and implement them !
 
+## Mac OS X ##
+_This has been untested but should work. However, it is not in the makefile as it is not confirmed yet._
+- Install Xcode manually or with `xcode-select --install`
+- Install brew with `ruby -e "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/master/install)"`
+- Install the modules `brew install curl git g++ m4 perl`
+- Download gmp and install it the same way as for Linux
+- Download ntl and install it the same way as for Linux
+- Download HElib and compile it the same way as for Linux
+- You can run `make project` and it should work as for the other platforms.
+
 ## Abstract ##
 This project concerns the research and development of a real-use application of homomorphic encryption for cloud computing. The application takes advantage of the various possibilities and limitations of present homomorphic encryption schemes and programming libraries to remain usable in terms of time. The foundations of the application rely on the design of binary operations using homomorphic encryption. All the binary logic gates and various binary blocks were developed and adapted to provide enough functionalities to the application. The project focuses on providing features to cloud computing such as calculating averages on large amounts of encrypted numbers in a relatively short and decent time. The result is an application program interface written in C++ allowing to perform various operations on integers. It thus shows homomorphic encryption can be used today for simple operations if the security is more important than the speed of execution. 
 
@@ -140,58 +151,3 @@ Thanks to **my dad**, **mother** and **step-mother** for their continuous suppor
 - Use *= instead of multiplyBy when the level is very low as it is faster. multiplyBy uses relinearization which serves to reduce the size of ciphertexts. This is great for complex circuits but takes a longer time than *= for simple circuits.
 - Add circuits from [here](http://www.aoki.ecei.tohoku.ac.jp/arith/mg/algorithm.html) to the core API
 - Other ideas are in chapter 9: _Future work_ of my report.
-
-
-
-** THE FOLLOWING IS BEING TESTED NOW **
-## Old Mac OS X ##
-- Install Xcode through the AppStore.
-
-## Mac OS X 10.9 & higher##
-For instance, manually you can do the following (this is being tested now).
-- `xcode-select --install`
-- `ruby -e "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/master/install)"`
-- `brew install -y curl git g++`
-- `brew install -y curl m4 perl`
-- `curl https://gmplib.org/download/gmp/gmp-6.1.0.tar.bz2 > gmp.tar.bz2`
-- `tar xjf gmp.tar.bz2`
-- `rm -f gmp.tar.bz2`
-- `cd gmp-6.1.0`
-- `./configure`
-- `make`
-- `make install`
-- `cd ..`
-- `curl http://www.shoup.net/ntl/ntl-9.6.2.tar.gz > ntl.tar.gz`
-- `tar xf ntl.tar.gz`
-- `rm -f ntl.tar.gz`
-- `cd ntl-9.6.2/src`
-- `./configure NTL_GMP_LIP=on`
-- `make`
-- `make install`
-- `git clone https://github.com/shaih/HElib.git`
-- `cd HElib/src`
-- `make`
-- `make check`
-- `make test`
-- `cd ..`
-- then the same thing as in the makefile should work -> `make project`
-ALL OF THIS IS BEING TESTED AND SHOULD BE CLARIFIED IN A FEW HOURS.
-
-When the makefile is launched, note that the following modules will be installed:
-   * Homebrew
-   * git
-   * g++
-   * curl
-   * m4
-   * perl
-
-**THIS IS NOT TRUE YET**
-For installing the project the first time, the Makefile works without the other source codes.
-Just move the Makefile in an empty directory and `cd` to it.
-
-1. To download, compile and install HElib and other libraries: `make HElib`
-2. To download, compile and run the project code: `make project`
-3. To re-compile the project _source_ directory with your modifications and run HEapp: `make HE`
-4. You can try `make help` for more information.
-
-**NOTE:** The project source code is now in the _./source_ directory, and the GitHub repository is in *./hbc_git*.
