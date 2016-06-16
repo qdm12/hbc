@@ -136,3 +136,8 @@ Thanks to **Alexandra Rouhana** for her useful discussions that helped me figure
 Thanks to **Wei Dai** from the Vernam Group at Worcester Polytechnic Institute for keeping me updated with the status of CuHE. 
 
 Thanks to **my dad**, **mother** and **step-mother** for their continuous support throughout my studies.
+
+#### New ideas which crossed my mind ####
+- Use *= instead of multiplyBy when the level is very low as it is faster. multiplyBy uses relinearization which serves to reduce the size of ciphertexts. This is great for complex circuits but takes a longer time than *= for simple circuits.
+- Add circuits from [here](http://www.aoki.ecei.tohoku.ac.jp/arith/mg/algorithm.html) to the core API
+- Other ideas are in chapter 9: _Future work_ of my report.
