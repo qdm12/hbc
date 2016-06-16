@@ -129,9 +129,9 @@ Credits to **Shai Halevi** for HElib obviously and thanks for the quick help tip
 
 Thanks to **Dr. Wei Dai** (Imperial College London) for introducing me to homomorphic encryption
 
-Thanks to **Christian Bodt** (Coinplus) for teaching the basics of cryptography and security, as well as useful coding skills.
+Thanks to **Christian Bodt** (Coinplus) for teaching me the basics of cryptography and security, as well as useful coding skills.
 
-Thanks to **Alexandra Rouhana** for her useful discussions which helped overcoming some design restrictions.
+Thanks to **Alexandra Rouhana** for her useful discussions that helped me figure out how to overcome some design restrictions.
 
 Thanks to **Wei Dai** from the Vernam Group at Worcester Polytechnic Institute for keeping me updated with the status of CuHE. 
 
