@@ -12,6 +12,11 @@ The core API is in the file _he.cpp_, the main code is in _main.cpp_, some other
 By default, it runs a set of unit tests on all the circuits implemented (initiated from _main.cpp_).
 You can change the tests, or _main.cpp_ or whatever and it should still work.
 
+## Documentation ##
+For now, there is only my report on the project which should be quite complete, and my comments in the source code.
+
+The report is contained in the repository and is also available [here](https://www.dropbox.com/s/rqnrslzb1pstkq0/FYP%20report%20-%20Homomorphic%20encryption%20Cryptography%20for%20cloud%20computing%20-%20Quentin%20McGaw%20qdm12%202016.pdf?dl=0)
+
 ## How do I run it? ##
 You will need several libraries.
 You can either use the _Makefile_ following the instructions in the **Makefile** section or do it manually.
@@ -114,8 +119,6 @@ _This could be especially useful for Mac OSX where the Makefile may not work_
 8. Run the program with `./HEapp` & Enjoy !
 9. Please refer to my long but complete report on this project, available in the repository.
 10. You're welcome to contribute to this repository if you find any better circuits or other circuits and implement them !
-
-
 
 ## Abstract ##
 This project concerns the research and development of a real-use application of homomorphic encryption for cloud computing. The application takes advantage of the various possibilities and limitations of present homomorphic encryption schemes and programming libraries to remain usable in terms of time. The foundations of the application rely on the design of binary operations using homomorphic encryption. All the binary logic gates and various binary blocks were developed and adapted to provide enough functionalities to the application. The project focuses on providing features to cloud computing such as calculating averages on large amounts of encrypted numbers in a relatively short and decent time. The result is an application program interface written in C++ allowing to perform various operations on integers. It thus shows homomorphic encryption can be used today for simple operations if the security is more important than the speed of execution. 
