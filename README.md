@@ -119,3 +119,17 @@ _This could be especially useful for Mac OSX where the Makefile may not work_
 
 ## Abstract ##
 This project concerns the research and development of a real-use application of homomorphic encryption for cloud computing. The application takes advantage of the various possibilities and limitations of present homomorphic encryption schemes and programming libraries to remain usable in terms of time. The foundations of the application rely on the design of binary operations using homomorphic encryption. All the binary logic gates and various binary blocks were developed and adapted to provide enough functionalities to the application. The project focuses on providing features to cloud computing such as calculating averages on large amounts of encrypted numbers in a relatively short and decent time. The result is an application program interface written in C++ allowing to perform various operations on integers. It thus shows homomorphic encryption can be used today for simple operations if the security is more important than the speed of execution. 
+
+
+### Acknowledgements ###
+Credits to **Shai Halevi** for HElib obviously and thanks for the quick help tips in the Issues section!
+
+Thanks to **Dr. Wei Dai** (Imperial College London) for introducing me to homomorphic encryption
+
+Thanks to **Christian Bodt** (Coinplus) for teaching the basics of cryptography and security, as well as useful coding skills.
+
+Thanks to **Alexandra Rouhana** for her useful discussions which helped overcoming some design restrictions.
+
+Thanks to **Wei Dai** from the Vernam Group at Worcester Polytechnic Institute for keeping me updated with the status of CuHE. 
+
+Thanks to **my dad**, **mother** and **step-mother** for their continuous support throughout my studies.
