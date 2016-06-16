@@ -6,7 +6,7 @@ _This project was developed as my Master final year project at Imperial College 
 It is an **API** of homomorphic binary operations such as binary comparisons or binary divisions using the library _HElib_.
 
 ## What is in there? ##
-The core API is in the file _he.cpp_, the main code is in _main.cpp_, some other classes are in __helper_functions.cpp__ and the rest are unit tests and timing tests for the homomorphic binary operations implemented. There is a _makefile_ to setup everything. My report is there to server as documentation for instance.
+The core API is in the file _he.cpp_, the main code is in _main.cpp_, some other classes are in *helper_functions.cpp* and the rest are unit tests and timing tests for the homomorphic binary operations implemented. There is a _makefile_ to setup everything. My report is there to server as documentation for instance.
 
 ## What does it run ? ##
 By default, it runs a set of unit tests on all the circuits implemented (initiated from _main.cpp_).
@@ -63,7 +63,7 @@ Just move the Makefile in an empty directory and `cd` to it.
 3. To re-compile the project _source_ directory with your modifications and run HEapp: `make HE`
 4. You can try `make help` for more information.
 
-**NOTE:** The project source code is now in the _./source_ directory, and the GitHub repository is in __./hbc_git__.
+**NOTE:** The project source code is now in the _./source_ directory, and the GitHub repository is in *./hbc_git*.
 
 
 
