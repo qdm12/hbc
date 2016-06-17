@@ -18,24 +18,25 @@ For now, there is only my report on the project which should be quite complete, 
 The report is contained in the repository and is also available [here](https://www.dropbox.com/s/rqnrslzb1pstkq0/FYP%20report%20-%20Homomorphic%20encryption%20Cryptography%20for%20cloud%20computing%20-%20Quentin%20McGaw%20qdm12%202016.pdf?dl=0)
 
 ## How do I run it? ##
-You will need several libraries.
-You can either use the _Makefile_ following the instructions in the **Makefile** section or do it manually.
-For Mac OSX systems, refer to the **Mac OSX** section.
-In all scenarios, you will need the module **make**.
-The final executable file is HEapp in the root directory which can be run with `./HEapp`.
+In all scenarios, you will need the module **make** and to run as **root** or **administrator**.
+
+1. You will need several libraries.
+    - Use the _Makefile_ following the instructions in the **Makefile** section. **THIS is not compatible with all OS**
+    - OR do it manually following the instructions in the **Manual Setup** section.
+2. You have to compile the project.
+    - Use the _Makefile_ with `make project`, this should work for all platforms.
+    - OR do it manually following the instructions in the **Manual Setup** section.
 
 
-## Using the Makefile ##
-_The makefile only supports Cygwin and Debian-based Linux for instance, not Mac OSX yet._
-WARNING: Run your terminal as **root** or as **administrator**.
+## 1. Setup libraries with the Makefile ##
+This is only compatible with _Cygwin 32bit_ and _Debian-based Linux_.
 
-### Cygwin & Windows ###
-**Due to permission restrictions on Windows operating systems**, the following modules have to be installed manually before launching the makefile (by using the Cygwin installer):
-   * git
-   * gcc-g++
+**CYGWIN note:** Due to permission restrictions on Windows, install git and gcc-g++ manually with the Cygwin installer.
 
-When the makefile is launched, note that the following modules will be installed:
-   * apt-cyg
+When the makefile is launched, note that the following modules will be installed if not present:
+   * apt-cyg (_Windows_ only)
+   * git (_Linux_)
+   * gcc-g++ (_Linux_)
    * curl
    * m4
    * perl
@@ -44,49 +45,26 @@ For installing the project the first time, the Makefile works without the other 
 Just move the Makefile in an empty directory and `cd` to it.
 
 1. To download, compile and install HElib and other libraries: `make HElib`
-2. To download, compile and run the project code: `make project`
-3. To re-compile the project _source_ directory with your modifications: `make HE`
-4. You can try `make help` for more information
+2. You can try `make help` for more information
 
-**NOTE:** The project source code is now in the _./source_ directory, and the GitHub repository is in __./hbc_git__.
+## 1. Setup libraries manually ##
 
-### Debian-based Linux ###
-When the makefile is launched, note that the following modules will be installed:
-   * git
-   * g++
-   * curl
-   * m4
-   * perl
-
-For installing the project the first time, the Makefile works without the other source codes.
-Just move the Makefile in an empty directory and `cd` to it.
-
-1. To download, compile and install HElib and other libraries: `make HElib`
-2. To download, compile and run the project code: `make project`
-3. To re-compile the project _source_ directory with your modifications and run HEapp: `make HE`
-4. You can try `make help` for more information.
-
-**NOTE:** The project source code is now in the _./source_ directory, and the GitHub repository is in *./hbc_git*.
-
-
-## Manual Setup ##
-_This could be especially useful for Mac OSX where the Makefile may not work_
-
-0. You should already have gcc-g++ or g++ installed.
-1. Install m4 `apt install m4`
-2. Install perl `apt install perl`
-3. Install gmp:
-    * Download it [here](https://gmplib.org/download/gmp/gmp-6.1.0.tar.bz2)
+0. For _Mac OSX_, to simplify the task, you can install Brew with:
+    - Install Xcode manually or with `xcode-select --install`
+    - Install brew with `ruby -e "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/master/install)"`
+1. Install the modules with `apt install curl git g++ m4 perl` or `brew install curl git g++ m4 perl`.
+2. Install gmp:
+    * Download it with `curl https://gmplib.org/download/gmp/gmp-6.1.0.tar.bz2`
     * Extract it `tar xjf gmp-6.1.0.tar.bz2`
     * Go to it directory `cd gmp-6.1.0`
     * Configure it `./configure`
     * Make it `make`
     * Install it `make install`
     * Optionally, check it `make check`
-    * **For Cygwin**, `cp -f /usr/local/lib/libgmp.* /usr/XXXXX-pc-cygwin/lib/` where XXXXX is your CPU architecture.
-    * Go back to main directory `cd ..`
-4. Install NTL:
-    * Download it [here](http://www.shoup.net/ntl/ntl-9.6.2.tar.gz)
+    * **For Cygwin 32bit**, `cp -f /usr/local/lib/libgmp.* /usr/XXXXX-pc-cygwin/lib/` where XXXXX is your CPU architecture.
+    * Go back to the main directory `cd ..`
+3. Install NTL:
+    * Download it with `curl http://www.shoup.net/ntl/ntl-9.6.2.tar.gz`
     * Extract it `tar xf ntl-9.6.2.tar.gz`
     * Go to its source directory `cd ntl-9.6.2/src`
     * Configure it `./configure NTL_GMP_LIP=on`
@@ -94,43 +72,40 @@ _This could be especially useful for Mac OSX where the Makefile may not work_
     * Install it `make install`
     * Go back to main directory `cd ..`
 5. Install HElib
-    * Install git `apt install git`
-    * Clone it `git clone https://github.com/shaih/HElib.git`
-    * **For Cygwin**, do `sed -i -- 's/_B/_B_/g' HElib/src/Test_Replicate.cpp` or there will be a compile error.
+    * Clone it with `git clone https://github.com/shaih/HElib.git`
+    * **For Cygwin 32bit**, do `sed -i -- 's/_B/_B_/g' HElib/src/Test_Replicate.cpp` or there will be a compile error.
     * Go to its source directory `cd HElib/src`
     * Make it `make`
     * Check it `make check`
     * Optionally test it `make test`
     * Go back to main directory `cd ..`
-6. HElib is now ready to be used.
-7. Download and compile this project
-    * Clone it `git https://github.com/qdm12/hbc.git ./hbc_git`
-    * Create a source folder `mkdir -p source` at the root (where you should be)
-    * Copy the source files `cp ./hbc_git/* ./source`
-    * You will then need to compile all the files into objects (or simply run `make HE` from the Makefile provided)
-       * Create an _objects_ folder `mkdir -p objects`
-       * Compile the API `g++ -c source/he.cpp -I HElib/src -o objects/he.o`
-       * Compile the helper functions `g++ -c source/helper_functions.cpp -o objects/helper_functions.o`
-       * Compile the various tests
-          * `g++ -c source/test_gates.cpp -I HElib/src -o objects/test_gates.o`
-          * `g++ -c source/test_circ_comb.cpp -I HElib/src -o objects/test_circ_comb.o`
-          * `g++ -c source/test_circ_seq.cpp -I HElib/src -o objects/test_circ_seq.o`
-          * `g++ -c source/test_circ_arithm.cpp -I HElib/src -o objects/test_circ_arithm.o`
-       * Compile the main.cpp source file `g++ -c source/main.cpp -I HElib/src -o objects/main.o`
-       * Compile the objects into HEapp `g++ objects/*.o HElib/src/fhe.a -o HEapp -L/usr/local/lib -lntl -lgmp -lm`
-8. Run the program with `./HEapp` & Enjoy !
-9. Please refer to my long but complete report on this project, available in the repository.
-10. You're welcome to contribute to this repository if you find any better circuits or other circuits and implement them !
 
-## Mac OS X ##
-_This has been untested but should work. However, it is not in the makefile as it is not confirmed yet._
-- Install Xcode manually or with `xcode-select --install`
-- Install brew with `ruby -e "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/master/install)"`
-- Install the modules `brew install curl git g++ m4 perl`
-- Download gmp and install it the same way as for Linux
-- Download ntl and install it the same way as for Linux
-- Download HElib and compile it the same way as for Linux
-- You can run `make project` and it should work as for the other platforms.
+## 2. Setup the project with the Makefile ##
+This is compatible will **all** platforms.
+The final executable file is HEapp in the root directory which can be run with `./HEapp`.
+1. To download, compile and run the project code: `make project`
+2. To re-compile the project _source_ directory with your modifications: `make HE`
+3. You can try `make help` for more information
+**NOTE:** The project source code is now in the _./source_ directory, and the GitHub repository is in __./hbc_git__.
+
+## 2. Setup the project manually ##
+1. Download this project with `git https://github.com/qdm12/hbc.git ./hbc_git`
+2. Create a source folder `mkdir -p source` at the root (where you should be)
+3. Copy the source files `cp ./hbc_git/* ./source`
+5. Create an _objects_ folder `mkdir -p objects`
+6. Compile the API `g++ -c source/he.cpp -I HElib/src -o objects/he.o`
+7. Compile the helper functions `g++ -c source/helper_functions.cpp -o objects/helper_functions.o`
+8. Compile the various tests
+    * `g++ -c source/test_gates.cpp -I HElib/src -o objects/test_gates.o`
+    * `g++ -c source/test_circ_comb.cpp -I HElib/src -o objects/test_circ_comb.o`
+    * `g++ -c source/test_circ_seq.cpp -I HElib/src -o objects/test_circ_seq.o`
+    * `g++ -c source/test_circ_arithm.cpp -I HElib/src -o objects/test_circ_arithm.o`
+9. Compile the main.cpp source file `g++ -c source/main.cpp -I HElib/src -o objects/main.o`
+10. Compile the objects into HEapp `g++ objects/*.o HElib/src/fhe.a -o HEapp -L/usr/local/lib -lntl -lgmp -lm`
+11. Run the program with `./HEapp` & Enjoy !
+    Please refer to my long but complete report on this project, available in the repository.
+    You're welcome to contribute to this repository if you find any better circuits or other circuits and implement them !
+
 
 ## Abstract ##
 This project concerns the research and development of a real-use application of homomorphic encryption for cloud computing. The application takes advantage of the various possibilities and limitations of present homomorphic encryption schemes and programming libraries to remain usable in terms of time. The foundations of the application rely on the design of binary operations using homomorphic encryption. All the binary logic gates and various binary blocks were developed and adapted to provide enough functionalities to the application. The project focuses on providing features to cloud computing such as calculating averages on large amounts of encrypted numbers in a relatively short and decent time. The result is an application program interface written in C++ allowing to perform various operations on integers. It thus shows homomorphic encryption can be used today for simple operations if the security is more important than the speed of execution. 
