@@ -34,18 +34,17 @@ This is only compatible with _Cygwin 32bit_ and _Debian-based Linux_.
 **CYGWIN note:** Due to permission restrictions on Windows, install git and gcc-g++ manually with the Cygwin installer.
 
 When the makefile is launched, note that the following modules will be installed if not present:
-   * apt-cyg (_Windows_ only)
-   * git (_Linux_)
-   * gcc-g++ (_Linux_)
-   * curl
-   * m4
-   * perl
+* apt-cyg (_Cygwin 32bit_ only)
+* git (_Linux_)
+* gcc-g++ (_Linux_)
+* curl
+* m4
+* perl
 
-For installing the project the first time, the Makefile works without the other source codes.
-Just move the Makefile in an empty directory and `cd` to it.
-
-1. To download, compile and install HElib and other libraries: `make HElib`
-2. You can try `make help` for more information
+To install the project the first time:
+- Move the makefile to an empty directory with `cd ..; mkdir -p new_dir; cd new_dir`
+- To download, compile and install HElib and other libraries: `make HElib`
+- You can try `make help` for more information
 
 ## 1. Setup libraries manually ##
 
