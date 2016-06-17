@@ -2,7 +2,7 @@
 
 _This project was developed as my Master final year project at Imperial College London._
 
-## What is it in **one** line? ##
+## What is it, in **one** line? ##
 It is an **API** of homomorphic binary operations such as binary comparisons or binary divisions using the library _HElib_.
 
 ## What is in there? ##
