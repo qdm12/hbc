@@ -27,6 +27,8 @@ The final executable file is HEapp in the root directory which can be run with `
 
 ## Using the Makefile ##
 _The makefile only supports Cygwin and Debian-based Linux for instance, not Mac OSX yet._
+WARNING: Run your terminal as **root** or as **administrator**.
+
 ### Cygwin & Windows ###
 **Due to permission restrictions on Windows operating systems**, the following modules have to be installed manually before launching the makefile (by using the Cygwin installer):
    * git
