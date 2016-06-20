@@ -66,6 +66,7 @@ endif
 	cd HElib/src && make test
 
 setup_gcc :
+	apt-cyg install libboost-devel
 ifeq ($(shell uname -o),Cygwin)
 	$(info Cygwin detected: Be sure to have gcc-g++ and git installed.)
 else
