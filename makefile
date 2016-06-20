@@ -66,12 +66,12 @@ endif
 	cd HElib/src && make test
 
 setup_gcc :
-	apt-cyg install libboost-devel
 ifeq ($(shell uname -o),Cygwin)
 	$(info Cygwin detected: Be sure to have gcc-g++ and git installed.)
+	apt-cyg install libboost-all-dev
 else
 	$(info Linux detected, installing modules if necessary.)
-	apt install -y git g++
+	apt install -y git g++ libboost-devel
 endif
 
 objects/helper_functions.o : source/helper_functions.cpp source/helper_functions.h
@@ -159,10 +159,10 @@ ifeq ($(shell uname -o),Cygwin)
 	lynx -source rawgit.com/transcode-open/apt-cyg/master/apt-cyg > apt-cyg
 	install apt-cyg /bin
 	rm -f apt-cyg
-	apt-cyg remove curl perl m4 git gcc-g++
+	apt-cyg remove curl perl m4 git gcc-g++ libboost-devel
 	$(info ...Removed curl perl m4 git gcc-g++ from CYGWIN)
 else
-	apt remove -y perl git g++
+	apt remove -y perl git g++ libboost-all-dev
 endif
 
 help : 
