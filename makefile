@@ -48,7 +48,7 @@ endif
 
 ntl : ini gmp
 	$(info Installing NTL...)
-	curl http://www.shoup.net/ntl/ntl-9.6.2.tar.gz > ntl.tar.gz
+	curl http://www.shoup.net/ntl/ntl-9.9.1.tar.gz > ntl.tar.gz
 	tar xf ntl.tar.gz
 	rm -f ntl.tar.gz
 	cd ntl-$(NTL_V)/src && ./configure NTL_GMP_LIP=on
