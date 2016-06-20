@@ -68,10 +68,10 @@ endif
 setup_gcc :
 ifeq ($(shell uname -o),Cygwin)
 	$(info Cygwin detected: Be sure to have gcc-g++ and git installed.)
-	apt-cyg install libboost-all-dev
+	apt-cyg install libboost-devel
 else
 	$(info Linux detected, installing modules if necessary.)
-	apt install -y git g++ libboost-devel
+	apt install -y git g++ libboost-all-dev
 endif
 
 objects/helper_functions.o : source/helper_functions.cpp source/helper_functions.h
