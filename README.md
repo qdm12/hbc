@@ -1,5 +1,7 @@
 # Homomorphic binary circuits - _hbc_ #
 
+#DOES NOT WORK WITH MOST RECENT UPDATE OF HELIB, STILL WORKING ON THIS NOW#
+
 _This project was developed as my Master final year project at Imperial College London._
 
 ## What is it, in **one** line? ##
@@ -88,17 +90,17 @@ The final executable file is HEapp in the root directory which can be run with `
 **NOTE:** The project source code is now in the _./source_ directory, and the GitHub repository is in __./hbc_git__.
 
 ## 2. Setup the project manually ##
-1. Download this project with `git https://github.com/qdm12/hbc.git ./hbc_git`
+1. Download this project with `git clone https://github.com/qdm12/hbc.git ./hbc_git`
 2. Create a source folder `mkdir -p source` at the root (where you should be)
 3. Copy the source files `cp ./hbc_git/* ./source`
 5. Create an _objects_ folder `mkdir -p objects`
 6. Compile the API `g++ -c source/he.cpp -I HElib/src -o objects/he.o`
 7. Compile the helper functions `g++ -c source/helper_functions.cpp -o objects/helper_functions.o`
 8. Compile the various tests
-    * `g++ -c source/test_gates.cpp -I HElib/src -o objects/test_gates.o`
-    * `g++ -c source/test_circ_comb.cpp -I HElib/src -o objects/test_circ_comb.o`
-    * `g++ -c source/test_circ_seq.cpp -I HElib/src -o objects/test_circ_seq.o`
-    * `g++ -c source/test_circ_arithm.cpp -I HElib/src -o objects/test_circ_arithm.o`
+    * `g++ -c source/TEST_GATES.cpp -I HElib/src -o objects/test_gates.o`
+    * `g++ -c source/TEST_CIRC_COMB.cpp -I HElib/src -o objects/test_circ_comb.o`
+    * `g++ -c source/TEST_CIRC_SEQ.cpp -I HElib/src -o objects/test_circ_seq.o`
+    * `g++ -c source/TEST_CIRC_ARITHM.cpp -I HElib/src -o objects/test_circ_arithm.o`
 9. Compile the main.cpp source file `g++ -c source/main.cpp -I HElib/src -o objects/main.o`
 10. Compile the objects into HEapp `g++ objects/*.o HElib/src/fhe.a -o HEapp -L/usr/local/lib -lntl -lgmp -lm`
 11. Run the program with `./HEapp` & Enjoy !
