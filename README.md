@@ -1,6 +1,6 @@
-# Homomorphic binary circuits - _hbc_ #
+# WARNING: This is broken because of a recent update of HElib, I am working on this and it should be resolved in a few hours. You can refer to https://github.com/shaih/HElib/issues/99 for more information on the issue #
 
-#DOES NOT WORK WITH MOST RECENT UPDATE OF HELIB, STILL WORKING ON THIS NOW#
+# Homomorphic binary circuits - _hbc_ #
 
 _This project was developed as my Master final year project at Imperial College London._
 
