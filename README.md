@@ -1,4 +1,4 @@
-# WARNING: Does not work on Debian based OSes ! This is broken because of a recent update of HElib/NTL, I am working on this and it should be resolved in a few hours. You can refer to https://github.com/shaih/HElib/issues/99 for more information on the issue #
+### WARNING: Does not work on Debian based OSes ! This is broken because of a recent update of HElib/NTL, I am working on this and it should be resolved in a few hours. You can refer to https://github.com/shaih/HElib/issues/99 for more information on the issue ###
 
 # Homomorphic binary circuits - _hbc_ #
 
@@ -15,9 +15,9 @@ By default, it runs a set of unit tests on all the circuits implemented (initiat
 You can change the tests, or _main.cpp_ or whatever and it should still work.
 
 ## Documentation ##
-For now, there is only my report on the project which should be quite complete, and my comments in the source code.
-
-The report is contained in the repository and is also available [here](https://www.dropbox.com/s/rqnrslzb1pstkq0/FYP%20report%20-%20Homomorphic%20encryption%20Cryptography%20for%20cloud%20computing%20-%20Quentin%20McGaw%20qdm12%202016.pdf?dl=0)
+- Report available [here](https://www.dropbox.com/s/rqnrslzb1pstkq0/FYP%20report%20-%20Homomorphic%20encryption%20Cryptography%20for%20cloud%20computing%20-%20Quentin%20McGaw%20qdm12%202016.pdf?dl=1)
+- Presentation available [here](https://www.dropbox.com/s/scrwpum0avtqxuw/Presentation.pptx?dl=1)
+- Comments in the source code, especially in _he.cpp_
 
 ## How do I run it? ##
 In all scenarios, you will need the module **make** and to run as **root** or **administrator**.
