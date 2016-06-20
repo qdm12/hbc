@@ -1,6 +1,6 @@
 #Requires make for cygwin and an internet connection
 GMP_V = 6.1.0
-NTL_V = 9.6.2
+NTL_V = 9.9.1
 
 error:
 	$(error make has to be followed by something)
