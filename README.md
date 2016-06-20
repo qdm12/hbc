@@ -53,8 +53,8 @@ To install the project the first time:
     - Install brew with `ruby -e "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/master/install)"`
 1. Install the modules with `apt install curl git g++ m4 perl` or `brew install curl git g++ m4 perl`.
 2. Install gmp:
-    * Download it with `curl https://gmplib.org/download/gmp/gmp-6.1.0.tar.bz2`
-    * Extract it `tar xjf gmp-6.1.0.tar.bz2`
+    * Download it with `curl https://gmplib.org/download/gmp/gmp-6.1.0.tar.bz2 > gmp.tar.bz2`
+    * Extract it `tar xjf gmp.tar.bz2`
     * Go to it directory `cd gmp-6.1.0`
     * Configure it `./configure`
     * Make it `make`
@@ -63,9 +63,9 @@ To install the project the first time:
     * **For Cygwin 32bit**, `cp -f /usr/local/lib/libgmp.* /usr/XXXXX-pc-cygwin/lib/` where XXXXX is your CPU architecture.
     * Go back to the main directory `cd ..`
 3. Install NTL:
-    * Download it with `curl http://www.shoup.net/ntl/ntl-9.6.2.tar.gz`
-    * Extract it `tar xf ntl-9.6.2.tar.gz`
-    * Go to its source directory `cd ntl-9.6.2/src`
+    * Download it with `curl http://www.shoup.net/ntl/ntl-9.9.1.tar.gz > ntl.tar.gz`
+    * Extract it `tar xf ntl.tar.gz`
+    * Go to its source directory `cd ntl-9.9.1/src`
     * Configure it `./configure NTL_GMP_LIP=on`
     * Make it `make`
     * Install it `make install`
@@ -77,7 +77,7 @@ To install the project the first time:
     * Make it `make`
     * Check it `make check`
     * Optionally test it `make test`
-    * Go back to main directory `cd ..`
+    * Go back to the main directory `cd ..`
 
 ## 2. Setup the project with the Makefile ##
 This is compatible will **all** platforms.
