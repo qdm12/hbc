@@ -69,7 +69,7 @@ To install the project the first time:
     * Configure it `./configure NTL_GMP_LIP=on`
     * Make it `make`
     * Install it `make install`
-    * Go back to main directory `cd ..`
+    * Go back to main directory `cd ../..`
 5. Install HElib
     * Clone it with `git clone https://github.com/shaih/HElib.git`
     * **For Cygwin 32bit**, do `sed -i -- 's/_B/_B_/g' HElib/src/Test_Replicate.cpp` or there will be a compile error.
@@ -77,7 +77,7 @@ To install the project the first time:
     * Make it `make`
     * Check it `make check`
     * Optionally test it `make test`
-    * Go back to the main directory `cd ..`
+    * Go back to the main directory `cd ../..`
 
 ## 2. Setup the project with the Makefile ##
 This is compatible will **all** platforms.
