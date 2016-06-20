@@ -1,4 +1,3 @@
-#Requires make for cygwin and an internet connection
 GMP_V = 6.1.0
 NTL_V = 9.9.1
 
@@ -7,15 +6,22 @@ error:
 
 ini :
 	$(info Checking pre-requisites...)
-ifeq ($(shell uname -o),Cygwin)
-	$(info Cygwin detected, installing modules if necessary.)
+ifeq ($(shell uname),CYGWIN_NT-10.0-WOW)
+	$(info Cygwin 32 bit detected, installing modules if necessary.)
 	lynx -source rawgit.com/transcode-open/apt-cyg/master/apt-cyg > apt-cyg
 	install apt-cyg /bin
 	rm -f apt-cyg
 	apt-cyg install curl
 	#for helib, requires to manually install git on cygwin
 	#for ntl, requires to manually install gcc-g++ on cygwin
+else ifeq ($(shell uname),CYGWIN_NT-10.0)
+	$(info Cygwin 64 bit detected, installing modules if necessary.)
+	lynx -source rawgit.com/transcode-open/apt-cyg/master/apt-cyg > apt-cyg
+	install apt-cyg /bin
+	rm -f apt-cyg
+	apt-cyg install curl git gcc-g++
 else
+	$(info Debian detected, installing modules if necessary.)
 	apt install -y curl git g++
 endif
 	$(info = = = = = = = = = = = = = = = =)
@@ -40,7 +46,7 @@ endif
 	cd gmp-$(GMP_V) && make
 	cd gmp-$(GMP_V) && make install
 	#cd gmp-$(GMP_V) && make check
-ifeq ($(shell uname -o),Cygwin)
+ifeq ($(shell uname),CYGWIN_NT-10.0-WOW)
 	if [ -d "/usr/x86_64-pc-cygwin/lib/" ]; then cp -f /usr/local/lib/libgmp.* /usr/x86_64-pc-cygwin/lib/; fi
 	if [ -d "/usr/i686-pc-cygwin/lib/" ]; then cp -f /usr/local/lib/libgmp.* /usr/i686-pc-cygwin/lib/; fi
 endif
@@ -58,7 +64,7 @@ ntl : ini gmp
 HElib : ntl gmp
 	$(info Installing HELib...)
 	git clone https://github.com/shaih/HElib.git
-ifeq ($(shell uname -o),Cygwin)
+ifeq ($(shell uname),CYGWIN_NT-10.0-WOW)
 	sed -i -- 's/_B/_B_/g' HElib/src/Test_Replicate.cpp
 endif
 	cd HElib/src && make
@@ -66,9 +72,12 @@ endif
 	cd HElib/src && make test
 
 setup_gcc :
-ifeq ($(shell uname -o),Cygwin)
-	$(info Cygwin detected: Be sure to have gcc-g++ and git installed.)
+ifeq ($(shell uname),CYGWIN_NT-10.0-WOW)
+	$(info Cygwin 32bit detected: Be sure to have gcc-g++ and git installed.)
 	apt-cyg install libboost-devel
+else ifeq ($(shell uname),CYGWIN_NT-10.0)
+	$(info Cygwin 64bit detected, installing modules if necessary.)
+	apt-cyg install git gcc-g++ libboost-devel
 else
 	$(info Linux detected, installing modules if necessary.)
 	apt install -y git g++ libboost-all-dev
@@ -147,7 +156,7 @@ deepclean :
 	$(info ...Uninstalled GMP)
 	if [ -d "/ntl-$(NTL_V)" ]; then cd ntl-$(NTL_V)/src && make uninstall; fi
 	$(info ...Uninstalled NTL)
-ifeq ($(shell uname -o),Cygwin)
+ifeq ($(shell uname),CYGWIN_NT-10.0-WOW)
 	$(info Cygwin detected, uninstalling static GMP and NTL.)
 	rm -f /usr/x86_64-pc-cygwin/lib/libgmp.*
 	rm -f /usr/i686-pc-cygwin/lib/libgmp.*
