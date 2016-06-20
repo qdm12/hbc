@@ -1,4 +1,4 @@
-# WARNING: This is broken because of a recent update of HElib, I am working on this and it should be resolved in a few hours. You can refer to https://github.com/shaih/HElib/issues/99 for more information on the issue #
+# WARNING: Does not work on Debian based OSes ! This is broken because of a recent update of HElib/NTL, I am working on this and it should be resolved in a few hours. You can refer to https://github.com/shaih/HElib/issues/99 for more information on the issue #
 
 # Homomorphic binary circuits - _hbc_ #
 
