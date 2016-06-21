@@ -156,7 +156,7 @@ project : download HE
 
 	
 clean :
-	rm -fr *.exe *.o
+	rm -fr *.exe *.o ./HEapp
 	
 deepclean :
 	$(info Cleaning up everything !)
@@ -170,6 +170,7 @@ deepclean :
 		cd ntl-$(NTL_V)/src && make clean; \
 		cd ntl-$(NTL_V)/src && make uninstall; \
 	fi
+	rm -fr /usr/local/lib/libntl.so
 	$(info ...Uninstalled NTL)
 ifeq ($(shell uname),CYGWIN_NT-10.0-WOW)
 	$(info Cygwin detected, uninstalling static GMP and NTL.)
@@ -177,6 +178,10 @@ ifeq ($(shell uname),CYGWIN_NT-10.0-WOW)
 	rm -f /usr/i686-pc-cygwin/lib/libgmp.*
 	$(info ...Uninstalled static GMP and NTL)
 endif
+	rm -fr /usr/local/include/NTL
+	rm -f /usr/local/include/gmp.h
+	rm -f /usr/local/lib/libgmp.*
+	rm -f /usr/local/lib/libntl.*
 	rm -fr gmp-$(GMP_V) ntl-$(NTL_V) HElib
 	$(info ...Removed GMP, NTL, HELib folder)
 ifeq ($(shell uname -o),Cygwin)
@@ -186,7 +191,7 @@ ifeq ($(shell uname -o),Cygwin)
 	apt-cyg remove curl perl m4 git gcc-g++ libboost-devel
 	$(info ...Removed curl perl m4 git gcc-g++ from CYGWIN)
 else
-	apt remove -y perl git g++ libboost-all-dev
+	apt remove -y --purge perl git g++ libboost-all-dev libboost-dev
 endif
 
 help : 
