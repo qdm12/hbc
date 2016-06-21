@@ -1,4 +1,4 @@
-__**WARNING : **__ This may not work on Debian based operating systems for now. This is being tested now but could actually work on a fresh installation. You can refer to https://github.com/shaih/HElib/issues/99 for more information on the issue.
+__*WARNING : *__ This may not work on Debian based operating systems for now. This is being tested now but could actually work on a fresh installation. You can refer to https://github.com/shaih/HElib/issues/99 for more information on the issue.
 
 # Homomorphic binary circuits - _hbc_ #
 
@@ -29,7 +29,6 @@ In all scenarios, you will need the module **make** and to run as **root** or **
     - Use the _Makefile_ with `make project`, this should work for all platforms.
     - OR do it manually following the instructions in the **Manual Setup** section.
 
-
 ## 1. Setup libraries with the Makefile ##
 This is only compatible with _Cygwin 32bit_ and _Debian-based Linux_.
 
@@ -49,7 +48,6 @@ To install the project the first time:
 - You can try `make help` for more information
 
 ## 1. Setup libraries manually ##
-
 0. For _Mac OSX_, to simplify the task, you can install Brew with:
     - Install Xcode manually or with `xcode-select --install`
     - Install brew with `ruby -e "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/master/install)"`
@@ -106,6 +104,16 @@ The final executable file is HEapp in the root directory which can be run with `
 11. Run the program with `./HEapp` & Enjoy !
     Please refer to my long but complete report on this project, available in the repository.
     You're welcome to contribute to this repository if you find any better circuits or other circuits and implement them !
+
+## 3. Remove and uninstall ##
+With the makefile you can run `make clean` which simply removes .o and .exe files as well as HEapp.
+You can also run `make deepclean` which will uninstall from your system and delete:
+- The project
+- HElib
+- NTL
+- GMP
+- Curl, perl, m4, git, gcc-g++ and libboost (libboost-devel, libboost-all-dev, libboost-dev) and purge them.
+Only the makefile will remain in the folder.
 
 
 ## Abstract ##
