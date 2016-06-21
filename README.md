@@ -1,5 +1,3 @@
-__*WARNING : *__ This may not work on Debian based operating systems for now. This is being tested now but could actually work on a fresh installation. You can refer to https://github.com/shaih/HElib/issues/99 for more information on the issue.
-
 # Homomorphic binary circuits - _hbc_ #
 
 _This project was developed as my Master final year project at Imperial College London._
