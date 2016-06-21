@@ -42,7 +42,11 @@ endif
 	curl https://gmplib.org/download/gmp/gmp-6.1.0.tar.bz2 > gmp.tar.bz2
 	tar xjf gmp.tar.bz2
 	rm -f gmp.tar.bz2
+ifeq ($(shell uname),CYGWIN_NT-10.0)
+	cd gmp-$(GMP_V) && ./configure ABI=64
+else
 	cd gmp-$(GMP_V) && ./configure
+endif
 	cd gmp-$(GMP_V) && make
 	cd gmp-$(GMP_V) && make install
 	#cd gmp-$(GMP_V) && make check
@@ -57,7 +61,11 @@ ntl : ini gmp
 	curl http://www.shoup.net/ntl/ntl-9.9.1.tar.gz > ntl.tar.gz
 	tar xf ntl.tar.gz
 	rm -f ntl.tar.gz
+ifeq ($(shell uname),CYGWIN_NT-10.0)
+	cd ntl-$(NTL_V)/src && ./configure NTL_GMP_LIP=on CFLAGS="-O2 -m64"
+else
 	cd ntl-$(NTL_V)/src && ./configure NTL_GMP_LIP=on
+endif
 	cd ntl-$(NTL_V)/src && make
 	cd ntl-$(NTL_V)/src && make install
 	
@@ -152,9 +160,16 @@ clean :
 	
 deepclean :
 	$(info Cleaning up everything !)
-	if [ -d "/gmp-$(GMP_V)" ]; then cd gmp-$(GMP_V)/src && make uninstall; fi
+	if [ -d "/gmp-$(GMP_V)" ]; then \
+		cd gmp-$(GMP_V)/src && make clean; \
+		cd gmp-$(GMP_V)/src && make uninstall; \
+	fi
 	$(info ...Uninstalled GMP)
-	if [ -d "/ntl-$(NTL_V)" ]; then cd ntl-$(NTL_V)/src && make uninstall; fi
+	if [ -d "/ntl-$(NTL_V)" ]; then \
+		cd ntl-$(NTL_V)/src && make clobber; \
+		cd ntl-$(NTL_V)/src && make clean; \
+		cd ntl-$(NTL_V)/src && make uninstall; \
+	fi
 	$(info ...Uninstalled NTL)
 ifeq ($(shell uname),CYGWIN_NT-10.0-WOW)
 	$(info Cygwin detected, uninstalling static GMP and NTL.)
