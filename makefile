@@ -85,47 +85,47 @@ else
 	apt install -y git g++ libboost-all-dev
 endif
 
-objects/helper_functions.o : source/helper_functions.cpp source/helper_functions.h
+objects/helper_functions.o : src/helper_functions.cpp src/helper_functions.h
 	$(info )
 	$(info Building helper_functions.o...)
 	mkdir -p objects
-	g++ -std=c++11 -c source/helper_functions.cpp -o objects/helper_functions.o
+	g++ -std=c++11 -c src/helper_functions.cpp -o objects/helper_functions.o
 	
-objects/test_gates.o : source/TEST_GATES.cpp source/TEST_GATES.h
+objects/test_gates.o : src/TEST_GATES.cpp src/TEST_GATES.h
 	$(info )
 	$(info Building test_gates.o...)
 	mkdir -p objects
-	g++ -std=c++11 -c source/TEST_GATES.cpp -I HElib/src -o objects/test_gates.o
+	g++ -std=c++11 -c src/TEST_GATES.cpp -I HElib/src -o objects/test_gates.o
 	
-objects/test_circ_comb.o : source/TEST_CIRC_COMB.cpp source/TEST_CIRC_COMB.h
+objects/test_circ_comb.o : src/TEST_CIRC_COMB.cpp src/TEST_CIRC_COMB.h
 	$(info )
 	$(info Building test_circ_comb.o...)
 	mkdir -p objects
-	g++ -std=c++11 -c source/TEST_CIRC_COMB.cpp -I HElib/src -o objects/test_circ_comb.o
+	g++ -std=c++11 -c src/TEST_CIRC_COMB.cpp -I HElib/src -o objects/test_circ_comb.o
 	
-objects/test_circ_seq.o : source/TEST_CIRC_SEQ.cpp source/TEST_CIRC_SEQ.h
+objects/test_circ_seq.o : src/TEST_CIRC_SEQ.cpp src/TEST_CIRC_SEQ.h
 	$(info )
 	$(info Building test_circ_seq.o...)
 	mkdir -p objects
-	g++ -std=c++11 -c source/TEST_CIRC_SEQ.cpp -I HElib/src -o objects/test_circ_seq.o
+	g++ -std=c++11 -c src/TEST_CIRC_SEQ.cpp -I HElib/src -o objects/test_circ_seq.o
 	
-objects/test_circ_arithm.o : source/TEST_CIRC_ARITHM.cpp source/TEST_CIRC_ARITHM.h
+objects/test_circ_arithm.o : src/TEST_CIRC_ARITHM.cpp src/TEST_CIRC_ARITHM.h
 	$(info )
 	$(info Building test_circ_arithm.o...)
 	mkdir -p objects
-	g++ -std=c++11 -c source/TEST_CIRC_ARITHM.cpp -I HElib/src -o objects/test_circ_arithm.o
+	g++ -std=c++11 -c src/TEST_CIRC_ARITHM.cpp -I HElib/src -o objects/test_circ_arithm.o
 	
-objects/he.o : source/he.cpp source/he.h
+objects/he.o : src/he.cpp src/he.h
 	$(info )
 	$(info Building he.o...)
 	mkdir -p objects
-	g++ -std=c++11 -c source/he.cpp -I HElib/src -o objects/he.o
+	g++ -std=c++11 -c src/he.cpp -I HElib/src -o objects/he.o
 	
-objects/main.o: source/main.cpp
+objects/main.o: src/main.cpp
 	$(info )
 	$(info Building main.o...)
 	mkdir -p objects
-	g++ -std=c++11 -c source/main.cpp -I HElib/src -o objects/main.o
+	g++ -std=c++11 -c src/main.cpp -I HElib/src -o objects/main.o
 	
 HEapp : objects/he.o objects/helper_functions.o \
 		objects/test_gates.o objects/test_circ_comb.o objects/test_circ_seq.o \
@@ -145,9 +145,6 @@ download :
 	cp ./hbc_git/* ./source
 	
 project : download HE
-
-	
-
 	
 clean :
 	rm -fr *.exe *.o ./HEapp
