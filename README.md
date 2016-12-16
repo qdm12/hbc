@@ -1,27 +1,56 @@
-# Homomorphic binary circuits - _hbc_ #
+# Homomorphic binary circuits - _hbc_
 
 _This project was developed as my Master final year project at Imperial College London._
+_This project is still maintained by Quentin McGaw quentin . mcgaw at gmail . com
 
-## What is it, in **one** line? ##
+## What is it, in **one** line?
 It is an **API** of homomorphic binary operations such as binary comparisons or binary divisions using the library _HElib_.
 
-## What is in there? ##
+## What is in there?
 The core API is in the file _he.cpp_, the main code is in _main.cpp_, some other classes are in *helper_functions.cpp* and the rest are unit tests and timing tests for the homomorphic binary operations implemented. There is a _makefile_ to setup everything. My report is there to server as documentation for instance.
 
-## What does it run ? ##
+## What does it run ?
 By default, it runs a set of unit tests on all the circuits implemented (initiated from _main.cpp_).
 You can change the tests, or _main.cpp_ or whatever and it should still work.
 
-## Documentation ##
+## Documentation
 - Report available [here](https://www.dropbox.com/s/rqnrslzb1pstkq0/FYP%20report%20-%20Homomorphic%20encryption%20Cryptography%20for%20cloud%20computing%20-%20Quentin%20McGaw%20qdm12%202016.pdf?dl=1)
-- Presentation available [here](https://www.dropbox.com/s/scrwpum0avtqxuw/Presentation.pptx?dl=1)
+- **Presentation** available [here](https://www.dropbox.com/s/scrwpum0avtqxuw/Presentation.pptx?dl=1)
 - Comments in the source code, especially in _he.cpp_
 
-## How do I run it? ##
+## How do I run it?
+### Using Vagrant (easiest, compatible with all, most flexible)
+1. Install git on your computer
+    - `apt-get install -y git` for Linux machines
+    - or download it from [git-scm.com/downloads](https://git-scm.com/downloads)
+2. Install Virtual Box from [virtualbox.org/wiki/Downloads](https://www.virtualbox.org/wiki/Downloads)
+3. Install Vagrant from [vagrantup.com/downloads.html](https://www.vagrantup.com/downloads.html)
+4. Open a terminal and enter `git clone https://github.com/qdm12/hbc.git`
+5. Go to the hbc directory with `cd hbc`
+6. Enter `vagrant up` to launch the virtual machine which will setup and build everything for you. 
+This takes about 30 minutes the first time, depending on your connection speed and CPU.
+This basically launches an Ubuntu-based virtual machine with only what is necessary for this project.
+7. Once vagrant up has completed, enter `vagrant ssh` to log in the virtual machine.
+8. The working directory *hbc* on your host machine is shared with the virtual machine at `/vagrant`.
+9. In the virtual machine, enter `cd /vagrant`.
+10. What's nice then:
+    - You can modify the files on your host machine (like Windows
+    - Changes you make are automatically reflected in the virtual machine.
+    - Compile hbc again with `make hbc` in the virtual machine.
+    - Run hbc with ./hbc from the virtual machine or your host machine.
+    - **Note:** *You can use `make hbcNrun` to build and automatically run the main.cpp code.
+11. When you are done:
+    - Enter `exit` in the virtual machine, bringing you back to your host machine.
+    - Enter `vagrant halt` to shutdown the machine. Or enter `vagrant destroy` to delete the machine.
+12. To log back in, enter `vagrant up` and it should take about 30 seconds ! (except if you destroy the machine)
+
+
+### Using more manual ways, which don't work for all OSes
 In all scenarios, you will need the module **make** and to run as **root** or **administrator**.
 
 1. You will need several libraries.
-    - Use the _Makefile_ following the instructions in the **Makefile** section. **THIS is not compatible with all OS**
+    - Use the _Makefile_ following the instructions in the **Makefile** section.
+      **This works for Cygwin 32 bit, but is far from compatible with all OSes**
     - OR do it manually following the instructions in the **Manual Setup** section.
 2. You have to compile the project.
     - Use the _Makefile_ with `make project`, this should work for all platforms.

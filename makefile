@@ -7,12 +7,11 @@ error:
 ini :
 	$(info Checking pre-requisites...)
 ifeq ($(shell uname -o),Cygwin)
-	#ifeq (findstring($(shell uname),WOW)) FOR 32 bit
 	$(info Cygwin 32 bit detected, installing modules if necessary.)
 	lynx -source rawgit.com/transcode-open/apt-cyg/master/apt-cyg > apt-cyg
 	install apt-cyg /bin
 	rm -f apt-cyg
-	apt-cyg install curl
+	apt-cyg install curl libboost-devel
 	#for helib, requires to manually install git on cygwin
 	#for ntl, requires to manually install gcc-g++ on cygwin
 #	else
@@ -22,8 +21,8 @@ ifeq ($(shell uname -o),Cygwin)
 #		rm -f apt-cyg
 #		apt-cyg install curl git gcc-g++
 else
-	$(info Debian detected, installing modules if necessary.)
-	apt install -y curl git g++
+	$(info Linux detected, installing modules if necessary.)
+	apt-get install -y curl git g++ libboost-all-dev
 endif
 	$(info = = = = = = = = = = = = = = = =)
 	$(info All pre-requisites modules are installed.)
@@ -37,7 +36,7 @@ ifeq ($(shell uname -o),Cygwin)
 	apt-cyg install m4 perl
 else
 	$(info Linux detected, installing modules if necessary.)
-	apt install -y m4 perl
+	apt-get install -y m4 perl
 endif
 	$(info M4 and Perl are installed.)
 	curl https://gmplib.org/download/gmp/gmp-6.1.0.tar.bz2 > gmp.tar.bz2
@@ -59,7 +58,7 @@ ntl : ini gmp
 	curl http://www.shoup.net/ntl/ntl-9.9.1.tar.gz > ntl.tar.gz
 	tar xf ntl.tar.gz
 	rm -f ntl.tar.gz
-	#cd ntl-$(NTL_V)/src && ./configure NTL_GMP_LIP=on CFLAGS="-O2 -m64"
+    #CFLAGS="-O2 -m64"
 	cd ntl-$(NTL_V)/src && ./configure NTL_GMP_LIP=on
 	cd ntl-$(NTL_V)/src && make
 	cd ntl-$(NTL_V)/src && make install
@@ -73,17 +72,6 @@ endif
 	cd HElib/src && make
 	cd HElib/src && make check
 	cd HElib/src && make test
-
-setup_gcc :
-ifeq ($(shell uname -o),Cygwin)
-	$(info Cygwin 32bit detected: Be sure to have gcc-g++ and git installed.)
-	apt-cyg install libboost-devel
-	#$(info Cygwin 64bit detected, installing modules if necessary.)
-	#apt-cyg install git gcc-g++ libboost-devel
-else
-	$(info Linux detected, installing modules if necessary.)
-	apt install -y git g++ libboost-all-dev
-endif
 
 objects/helper_functions.o : src/helper_functions.cpp src/helper_functions.h
 	$(info )
@@ -127,27 +115,19 @@ objects/main.o: src/main.cpp
 	mkdir -p objects
 	g++ -std=c++11 -c src/main.cpp -I HElib/src -o objects/main.o
 	
-HEapp : objects/he.o objects/helper_functions.o \
+hbc : objects/he.o objects/helper_functions.o \
 		objects/test_gates.o objects/test_circ_comb.o objects/test_circ_seq.o \
 		objects/test_circ_arithm.o \
 		objects/main.o
 	$(info )
-	$(info Building HEapp...)
-	g++ -std=c++11 objects/*.o HElib/src/fhe.a -o HEapp -L/usr/local/lib -lntl -lgmp -lm
+	$(info Building hbc...)
+	g++ -std=c++11 objects/*.o HElib/src/fhe.a -o hbc -L/usr/local/lib -lntl -lgmp -lm
 	
-HE : setup_gcc HEapp
-	./HEapp
-	
-download : 
-	rm -fr hbc_git
-	git clone https://github.com/qdm12/hbc.git ./hbc_git
-	mkdir -p source
-	cp ./hbc_git/* ./source
-	
-project : download HE
+hbcNrun : hbc
+	./hbc
 	
 clean :
-	rm -fr *.exe *.o ./HEapp
+	rm -fr *.exe *.o ./hbc
 	
 deepclean :
 	$(info Cleaning up everything !)
@@ -174,14 +154,13 @@ ifeq ($(shell uname -o),Cygwin)
 	apt-cyg remove --purge curl perl m4 git gcc-g++ libboost-devel
 	$(info ...Removed curl perl m4 git gcc-g++ from CYGWIN)
 else
-	apt remove -y --purge perl git g++ libboost-all-dev libboost-dev
+	apt-get remove -y --purge perl git g++ libboost-all-dev libboost-dev
 endif
 
 help : 
 	@echo Available commands are:
 	@echo make HElib - Downloads HElib and other libraries and installs them
-	@echo make project - Downloads, compiles the project source code and runs it.
-	@echo make HEapp - Compiles the project source code into an executable "HEApp"
-	@echo make HE - Compiles the project source code and runs it.
+	@echo make hbc - Compiles the project source code into an executable "hbc"
+	@echo make hbcNrun - Compiles the project source code and runs it.
 	@echo make clean - Removes all executables .exe and objects .o
 	@echo make deepclean - Removes all the libraries and packages installed. BE CAUTIOUS!

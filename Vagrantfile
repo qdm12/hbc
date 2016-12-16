@@ -22,6 +22,7 @@ Vagrant.configure(2) do |config|
     ./configure
 	make
 	make install
+    #make check
     cd ..
     rm -fr temp
     unset GMP_V
@@ -53,7 +54,7 @@ Vagrant.configure(2) do |config|
     fi
    
     #Building hbc
-    make HEapp
+    make hbc
     
     echo "colorscheme desert" > ~/.vimrc
   SHELL
