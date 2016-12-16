@@ -14,8 +14,8 @@ By default, it runs a set of unit tests on all the circuits implemented (initiat
 You can change the tests, or _main.cpp_ or whatever and it should still work.
 
 ## Documentation
+- *Presentation* available [here](https://www.dropbox.com/s/scrwpum0avtqxuw/Presentation.pptx?dl=1)
 - Report available [here](https://www.dropbox.com/s/rqnrslzb1pstkq0/FYP%20report%20-%20Homomorphic%20encryption%20Cryptography%20for%20cloud%20computing%20-%20Quentin%20McGaw%20qdm12%202016.pdf?dl=1)
-- **Presentation** available [here](https://www.dropbox.com/s/scrwpum0avtqxuw/Presentation.pptx?dl=1)
 - Comments in the source code, especially in _he.cpp_
 
 ## How do I run it?
@@ -61,7 +61,7 @@ This basically launches an Ubuntu-based virtual machine with only what is necess
         - Mac OSX
             1. Install Xcode manually or with `xcode-select --install`
             2. Install brew with `ruby -e "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/master/install)"`
-            3. Install libraries with `brew install wget git g++ m4 perl`
+            3. Install libraries with `brew install wget git g++ m4 perl lzip XXX libboost`
             4. Download GMP with `curl https://gmplib.org/download/gmp/gmp-6.1.0.tar.bz2 > gmp-6.1.0.tar.bz2`
             5. Extract it and go to its directory with `tar xjf gmp-6.1.0.tar.bz2 && cd gmp-6.1.0`
             6. Configure it with `./configure`
@@ -81,7 +81,7 @@ This basically launches an Ubuntu-based virtual machine with only what is necess
             19. *Optionally*, check it with `make check` and test it with `make test`.
             20. Go back to the working directory with `cd ../..`
         - Other Linux OSes
-            1. Install the libaries with (add `*sudo*` maybe) `apt-get install git g++ m4 perl`
+            1. Install the libaries with (add `*sudo*` maybe) `apt-get install git g++ m4 perl lzip libboost-all-dev`
             2. Download GMP with `wget https://gmplib.org/download/gmp/gmp-6.1.0.tar.bz2`
             3. Extract it and go to its directory with `tar xjf gmp-6.1.0.tar.bz2 && cd gmp-6.1.0`
             4. Configure it with `./configure`
@@ -103,7 +103,7 @@ This basically launches an Ubuntu-based virtual machine with only what is necess
         - Cygwin 32 bit
             1. Install apt-cyg with 
             2. Manually install git and gcc-g++ (and make) with the Cygwin installer.
-            3. Install the libaries with `apt-cyg install git g++ m4 perl`
+            3. Install the libaries with `apt-cyg install git g++ m4 perl lzip libboost-devel`
             4. Download GMP with `wget https://gmplib.org/download/gmp/gmp-6.1.0.tar.bz2`
             5. Extract it and go to its directory with `tar xjf gmp-6.1.0.tar.bz2 && cd gmp-6.1.0`
             6. Configure it with `./configure`
