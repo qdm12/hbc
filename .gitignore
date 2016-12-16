@@ -1,4 +1,6 @@
 .vagrant
 HElib
+objects
+hbc
 *.o
 *.exe

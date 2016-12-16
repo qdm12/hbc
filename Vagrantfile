@@ -3,9 +3,11 @@ Vagrant.configure(2) do |config|
   #config.vm.network "forwarded_port", guest: 5000, host: 5000
   config.vm.provider "virtualbox" do |vb|
     #vb.gui = true
-    vb.memory = "2048"
+    vb.memory = "4096"
     vb.cpus = 1
+    vb.name = "hbc-virtual-machine"
   end
+  config.vm.hostname = "hbc-hostname"
   config.vm.provision "shell", inline: <<-SHELL
     sudo apt-get update
     sudo apt-get install -y git g++ m4 perl libboost-all-dev
@@ -48,13 +50,14 @@ Vagrant.configure(2) do |config|
         git clone https://github.com/shaih/HElib.git
         cd HElib/src
         make
-        make check
-        make test
+        #make check
+        #make test
         cd ../..
     fi
    
     #Building hbc
     make hbc
+    ./hbc
     
     echo "colorscheme desert" > ~/.vimrc
   SHELL
