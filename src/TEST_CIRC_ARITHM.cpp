@@ -144,7 +144,7 @@ bool TEST_CIRC_ARITHM::test_DIVIDE(){
 		//only valid for 1024 plaintext slots
 		switch(bits){
 			case 2:
-				params.L = 11;
+				params.L = 12;
 				break;
 			case 3:
 				params.L = 21;
@@ -235,7 +235,7 @@ bool TEST_CIRC_ARITHM::test_AVERAGES(){
 		//only valid for 1024 plaintext slots, 2 numbers
 		switch(bits){
 			case 2:
-				params.L = 25;
+				params.L = 26;
 				break;
 			case 3:
 				params.L = 45;

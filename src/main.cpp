@@ -26,7 +26,7 @@ int main(int argc, char **argv)
 	e.display();
 	
 	//max 3 bits because of average circuit (can be disabled thought)
-	TEST_CIRC_ARITHM t_arithmetic(3, verbose);
+	TEST_CIRC_ARITHM t_arithmetic(2, verbose); //set to 2 so we don't require 6.6GB of ram !
 	e = t_arithmetic.test();
 	e.display();
 	

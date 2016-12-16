@@ -3,8 +3,8 @@ Vagrant.configure(2) do |config|
   #config.vm.network "forwarded_port", guest: 5000, host: 5000
   config.vm.provider "virtualbox" do |vb|
     #vb.gui = true
-    vb.memory = "6600"
-    #The average operation requires 6476MB of RAM!
+    vb.memory = "2600"
+    #The average operation requires 6476MB of RAM for 3 bits!
     #Note that other operations require way less RAM, such as multiplication.
     vb.cpus = 2
     #You can set it to 3 or more to run multiple instances of hbc If you have enough RAM.
@@ -17,8 +17,6 @@ Vagrant.configure(2) do |config|
     sudo apt-get -y autoremove
       
     #Installing GMP
-    mkdir temp
-    cd temp
     GMP_V=6.1.0
     wget https://gmplib.org/download/gmp/gmp-$GMP_V.tar.bz2
 	tar -xjf gmp-$GMP_V.tar.bz2
@@ -27,13 +25,10 @@ Vagrant.configure(2) do |config|
 	make
 	make install
     #make check
-    cd ..
-    rm -fr temp
+    rm -fr gmp-$GMP_V*
     unset GMP_V
     
     #Installing NTL
-    mkdir temp
-    cd temp
     NTL_V=9.9.1
     wget http://www.shoup.net/ntl/ntl-$NTL_V.tar.gz
 	tar -xvzf ntl-$NTL_V.tar.gz
@@ -41,8 +36,8 @@ Vagrant.configure(2) do |config|
     ./configure NTL_GMP_LIP=on
 	make
 	make install
-    cd ../..
-    rm -fr temp
+    cd ..
+    rm -fr ntl-$NTL_V*
     unset NTL_V
     
     #Installing HElib
@@ -60,8 +55,7 @@ Vagrant.configure(2) do |config|
    
     #Building hbc
     make hbc
-    echo "hbc was successfully built ! Run it with "cd /vagrant && ./hbc"
-    
+    echo "hbc was successfully built ! Run it with: cd /vagrant && ./hbc"
     echo "colorscheme desert" > ~/.vimrc
   SHELL
   config.vm.provision "file", source: "~/.gitconfig", destination: "~/.gitconfig"
