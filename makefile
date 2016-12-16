@@ -1,4 +1,4 @@
-GMP_V = 6.1.0
+GMP_V = 6.1.2
 NTL_V = 9.9.1
 COMPILER = g++
 
@@ -34,14 +34,14 @@ gmp : ini
 	$(info Installing pre-requisites M4 and perl)
 ifeq ($(shell uname -o),Cygwin)
 	$(info Cygwin detected, installing modules if necessary.)
-	apt-cyg install m4 perl
+	apt-cyg install m4 perl lzip
 else
 	$(info Debian detected, installing modules if necessary.)
-	apt-get install -y m4 perl
+	apt-get install -y m4 perl lzip
 endif
 	$(info M4 and Perl are installed.)
 	wget https://gmplib.org/download/gmp/gmp-$(GMP_V).tar.bz2
-	tar xjf gmp-$(GMP_V).tar.bz2
+    tar --lzip -xvf gmp-$(GMP_V).tar.lz
 	rm -f gmp-$(GMP_V).tar.bz2
 	#cd gmp-$(GMP_V) && ./configure ABI=64
 	cd gmp-$(GMP_V) && ./configure
