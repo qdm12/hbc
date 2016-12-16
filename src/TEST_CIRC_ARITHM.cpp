@@ -28,7 +28,8 @@ void TEST_CIRC_ARITHM::t_end(string name){
 }
 
 Errors TEST_CIRC_ARITHM::test(){
-	Errors e("TEST_CIRC_ARITHM");
+	cout << className() << ": Number of bits n was set to " << bits << endl;
+    Errors e("TEST_CIRC_ARITHM");
 	e.add("MULTIPLY arithmetic circuit", test_MULTIPLY());
 	e.add("FAST AVERAGES arithmetic circuit", test_FAVERAGES());
 	if (bits > 1){
@@ -83,7 +84,6 @@ bool TEST_CIRC_ARITHM::test_MULTIPLY(){
 		}
 	}
 	params.m = FindM(params.k,params.L,params.c,params.p,params.d,params.slb,0);
-	cout << className() << ": Number of bits n was set to " << bits << endl;
 	nslots = he.keyGen(params);
 	mkt k_ones = he.setOnes(nslots);
 	he.set01(k_ones);
@@ -165,7 +165,6 @@ bool TEST_CIRC_ARITHM::test_DIVIDE(){
 		}
 	}
 	params.m = FindM(params.k,params.L,params.c,params.p,params.d,params.slb,0);
-	cout << className() << ": Number of bits n was set to " << bits << endl;
 	nslots = he.keyGen(params);
 	mkt k_ones = he.setOnes(nslots);
 	he.set01(k_ones);
