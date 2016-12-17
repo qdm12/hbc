@@ -20,10 +20,10 @@ Vagrant.configure(2) do |config|
     GMP_V=6.1.2
     wget https://gmplib.org/download/gmp/gmp-$GMP_V.tar.lz
     tar --lzip -xvf gmp-$GMP_V.tar.lz
-	cd gmp-$GMP_V
+    cd gmp-$GMP_V
     ./configure
-	make
-	make install
+    make
+    make install
     #make check
     rm -fr gmp-$GMP_V*
     unset GMP_V
@@ -31,11 +31,11 @@ Vagrant.configure(2) do |config|
     #Installing NTL
     NTL_V=9.9.1
     wget http://www.shoup.net/ntl/ntl-$NTL_V.tar.gz
-	tar -xvzf ntl-$NTL_V.tar.gz
-	cd ntl-$NTL_V/src
+    tar -xvzf ntl-$NTL_V.tar.gz
+    cd ntl-$NTL_V/src
     ./configure NTL_GMP_LIP=on
-	make
-	make install
+    make
+    make install
     cd ..
     rm -fr ntl-$NTL_V*
     unset NTL_V

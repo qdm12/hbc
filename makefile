@@ -41,7 +41,7 @@ else
 endif
 	$(info M4 and Perl are installed.)
 	wget https://gmplib.org/download/gmp/gmp-$(GMP_V).tar.bz2
-    tar --lzip -xvf gmp-$(GMP_V).tar.lz
+	tar --lzip -xvf gmp-$(GMP_V).tar.lz
 	rm -f gmp-$(GMP_V).tar.bz2
 	#cd gmp-$(GMP_V) && ./configure ABI=64
 	cd gmp-$(GMP_V) && ./configure
