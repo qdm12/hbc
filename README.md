@@ -80,16 +80,16 @@ This basically launches an Ubuntu-based virtual machine with only what is necess
         - Mac OSX
             1. Install Xcode manually or with `xcode-select --install`
             2. Install brew with `ruby -e "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/master/install)"`
-            3. Install libraries with `brew install wget git g++ m4 perl lzip XXX libboost`
+            3. Install libraries with `brew install wget git g++ m4 perl libboost`
             4. Download GMP with `curl https://gmplib.org/download/gmp/gmp-6.1.2.tar.bz2 > gmp-6.1.2.tar.bz2`
-            5. Extract it and go to its directory with `tar xjf gmp-6.1.2.tar.bz2 && cd gmp-6.1.2`
+            5. Extract it and go to its directory with `tar -xvjf gmp-6.1.2.tar.bz2 && cd gmp-6.1.2`
             6. Configure it with `./configure`
             7. Build it with `make`
             8. Install it with `make install`
             9. *Optionally*, check it with `make check`
             10. Go back and remove used files with `cd .. && rm -fr gmp-6.1.2*`
             10. Download NTL with `curl http://www.shoup.net/ntl/ntl-9.9.1.tar.gz > ntl-9.9.1.tar.gz`
-            11. Extract it and go to its directory with `tar xvzf ntl-9.9.1.tar.gz && cd ntl-9.9.1/src`
+            11. Extract it and go to its directory with `tar -xvzf ntl-9.9.1.tar.gz && cd ntl-9.9.1/src`
             12. Configure it with `./configure NTL_GMP_LIP=on`
             13. Build it with `make`
             14. Install it with `make install`
@@ -100,16 +100,16 @@ This basically launches an Ubuntu-based virtual machine with only what is necess
             19. *Optionally*, check it with `make check` and test it with `make test`.
             20. Go back to the working directory with `cd ../..`
         - Other Linux OSes
-            1. Install the libaries with (add `*sudo*` maybe) `apt-get install git g++ m4 perl lzip libboost-all-dev`
+            1. Install the libaries with (add `*sudo*` maybe) `apt-get install git g++ m4 perl libboost-all-dev`
             2. Download GMP with `wget https://gmplib.org/download/gmp/gmp-6.1.2.tar.bz2`
-            3. Extract it and go to its directory with `tar xjf gmp-6.1.2.tar.bz2 && cd gmp-6.1.2`
+            3. Extract it and go to its directory with `tar -xvjf gmp-6.1.2.tar.bz2 && cd gmp-6.1.2`
             4. Configure it with `./configure`
             5. Build it with `make`
             6. Install it with `make install`
             7. *Optionally*, check it with `make check`
             8. Go back and remove used files with `cd .. && rm -fr gmp-6.1.2*`
             9. Download NTL with `wget http://www.shoup.net/ntl/ntl-9.9.1.tar.gz`
-            10. Extract it and go to its directory with `tar xvzf ntl-9.9.1.tar.gz && cd ntl-9.9.1/src`
+            10. Extract it and go to its directory with `tar -xvzf ntl-9.9.1.tar.gz && cd ntl-9.9.1/src`
             11. Configure it with `./configure NTL_GMP_LIP=on`
             12. Build it with `make`
             13. Install it with `make install`
@@ -122,9 +122,9 @@ This basically launches an Ubuntu-based virtual machine with only what is necess
         - Cygwin 32 bit
             1. Install apt-cyg with 
             2. Manually install git and gcc-g++ (and make) with the Cygwin installer.
-            3. Install the libaries with `apt-cyg install git g++ m4 perl lzip libboost-devel`
+            3. Install the libaries with `apt-cyg install git g++ m4 perl libboost-devel`
             4. Download GMP with `wget https://gmplib.org/download/gmp/gmp-6.1.2.tar.bz2`
-            5. Extract it and go to its directory with `tar xjf gmp-6.1.2.tar.bz2 && cd gmp-6.1.2`
+            5. Extract it and go to its directory with `tar -xvjf gmp-6.1.2.tar.bz2 && cd gmp-6.1.2`
             6. Configure it with `./configure`
             7. Build it with `make`
             6. Install it with `make install`
@@ -132,7 +132,7 @@ This basically launches an Ubuntu-based virtual machine with only what is necess
             8. Enter `cp -f /usr/local/lib/libgmp.* /usr/**XXXXX**-pc-cygwin/lib/` where **XXXXX** is your CPU architecture.
             9. Go back and remove used files with `cd .. && rm -fr gmp-6.1.2*`
             10. Download NTL with `wget http://www.shoup.net/ntl/ntl-9.9.1.tar.gz`
-            11. Extract it and go to its src directory with `tar xvzf ntl-9.9.1.tar.gz && cd ntl-9.9.1/src`
+            11. Extract it and go to its src directory with `tar -xvzf ntl-9.9.1.tar.gz && cd ntl-9.9.1/src`
             12. Configure it with `./configure NTL_GMP_LIP=on`
             13. Build it with `make`
             14. Install it with `make install`

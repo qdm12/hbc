@@ -13,13 +13,13 @@ Vagrant.configure(2) do |config|
   config.vm.hostname = "hbc-hostname"
   config.vm.provision "shell", inline: <<-SHELL
     sudo apt-get update
-    sudo apt-get install -y git g++ lzip m4 perl libboost-all-dev htop 
+    sudo apt-get install -y git g++ m4 perl libboost-all-dev htop 
     sudo apt-get -y autoremove
       
     #Installing GMP
     GMP_V=6.1.2
-    wget https://gmplib.org/download/gmp/gmp-$GMP_V.tar.lz
-    tar --lzip -xvf gmp-$GMP_V.tar.lz
+    wget https://gmplib.org/download/gmp/gmp-$GMP_V.tar.bz2
+    tar -xvjf gmp-$GMP_V.tar.bz2
     cd gmp-$GMP_V
     ./configure
     make
@@ -58,5 +58,6 @@ Vagrant.configure(2) do |config|
     echo "hbc was successfully built ! Run it with: cd /vagrant && ./hbc"
     echo "colorscheme desert" > ~/.vimrc
   SHELL
+  config.vm.provision "file", source: "~/.gitconfig", destination: "~/.gitconfig"
 end
 

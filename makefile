@@ -59,21 +59,20 @@ gmp : ini
 	$(info Installing pre-requisites M4 and perl)
 ifeq ($(shell uname -o),Cygwin)
 	$(info Cygwin detected, installing modules if necessary.)
-	apt-cyg install m4 perl lzip
+	apt-cyg install m4 perl
 else
 	$(info Debian detected, installing modules if necessary.)
-	apt-get install -y m4 perl lzip
+	apt-get install -y m4 perl
 endif
 	$(info M4 and Perl are installed.)
 	wget https://gmplib.org/download/gmp/gmp-$(GMP_V).tar.bz2
-	tar --lzip -xvf gmp-$(GMP_V).tar.lz
-	rm -f gmp-$(GMP_V).tar.bz2
+	tar -xvjf gmp-$(GMP_V).tar.bz2
 	#cd gmp-$(GMP_V) && ./configure ABI=64
 	cd gmp-$(GMP_V) && ./configure
 	cd gmp-$(GMP_V) && make
 	cd gmp-$(GMP_V) && make install
 	cd gmp-$(GMP_V) && make check
-	rm -fr gmp-$(GMP_V)
+	rm -fr gmp-$(GMP_V)*
 ifeq ($(shell uname -o),Cygwin)
 	if [ -d "/usr/x86_64-pc-cygwin/lib/" ]; then cp -f /usr/local/lib/libgmp.* /usr/x86_64-pc-cygwin/lib/; fi
 	if [ -d "/usr/i686-pc-cygwin/lib/" ]; then cp -f /usr/local/lib/libgmp.* /usr/i686-pc-cygwin/lib/; fi
@@ -83,13 +82,12 @@ endif
 ntl : ini gmp
 	$(info Installing NTL...)
 	wget http://www.shoup.net/ntl/ntl-$(NTL_V).tar.gz
-	tar xf ntl-$(NTL_V).tar.gz
-	rm -f ntl-$(NTL_V).tar.gz
+	tar -xvf ntl-$(NTL_V).tar.gz
 	#cd ntl-$(NTL_V)/src && ./configure NTL_GMP_LIP=on CFLAGS="-O2 -m64"
 	cd ntl-$(NTL_V)/src && ./configure NTL_GMP_LIP=on
 	cd ntl-$(NTL_V)/src && make
 	cd ntl-$(NTL_V)/src && make install
-	rm -fr ntl-$(NTL_V)
+	rm -fr ntl-$(NTL_V)*
 	
 HElib : ntl gmp
 	$(info Installing HELib...)
