@@ -58,6 +58,5 @@ Vagrant.configure(2) do |config|
     echo "hbc was successfully built ! Run it with: cd /vagrant && ./hbc"
     echo "colorscheme desert" > ~/.vimrc
   SHELL
-  config.vm.provision "file", source: "~/.gitconfig", destination: "~/.gitconfig"
 end
 
