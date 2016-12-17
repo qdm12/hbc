@@ -2,9 +2,41 @@ GMP_V = 6.1.2
 NTL_V = 9.9.1
 COMPILER = g++
 
-error:
-	$(error make has to be followed by something)
+hbc : mkdir objects/he.o objects/helper_functions.o \
+		objects/test_gates.o objects/test_circ_comb.o objects/test_circ_seq.o \
+		objects/test_circ_arithm.o \
+		objects/main.o
+	$(info )
+	$(info Compiling hbc...)
+	$(COMPILER) -std=c++11 objects/*.o HElib/src/fhe.a -o hbc -L/usr/local/lib -lntl -lgmp -lm
 
+mkdir :
+	mkdir -p objects
+	
+objects/he.o : src/he.cpp src/he.h
+	$(COMPILER) -std=c++11 -c src/he.cpp -I HElib/src -o objects/he.o
+
+objects/helper_functions.o : src/helper_functions.cpp src/helper_functions.h
+	$(COMPILER) -std=c++11 -c src/helper_functions.cpp -o objects/helper_functions.o
+	
+objects/test_gates.o : src/TEST_GATES.cpp src/TEST_GATES.h
+	$(COMPILER) -std=c++11 -c src/TEST_GATES.cpp -I HElib/src -o objects/test_gates.o
+	
+objects/test_circ_comb.o : src/TEST_CIRC_COMB.cpp src/TEST_CIRC_COMB.h
+	$(COMPILER) -std=c++11 -c src/TEST_CIRC_COMB.cpp -I HElib/src -o objects/test_circ_comb.o
+	
+objects/test_circ_seq.o : src/TEST_CIRC_SEQ.cpp src/TEST_CIRC_SEQ.h
+	$(COMPILER) -std=c++11 -c src/TEST_CIRC_SEQ.cpp -I HElib/src -o objects/test_circ_seq.o
+	
+objects/test_circ_arithm.o : src/TEST_CIRC_ARITHM.cpp src/TEST_CIRC_ARITHM.h
+	$(COMPILER) -std=c++11 -c src/TEST_CIRC_ARITHM.cpp -I HElib/src -o objects/test_circ_arithm.o
+	
+objects/main.o: src/main.cpp
+	$(COMPILER) -std=c++11 -c src/main.cpp -I HElib/src -o objects/main.o
+	
+hbcNrun : hbc
+	./hbc
+	
 ini :
 	$(info Checking pre-requisites...)
 ifeq ($(shell uname -o),Cygwin)
@@ -13,14 +45,7 @@ ifeq ($(shell uname -o),Cygwin)
 	install apt-cyg /bin
 	rm -f apt-cyg
 	apt-cyg install libboost-devel
-	#for helib, requires to manually install git on cygwin
-	#for ntl, requires to manually install gcc-g++ on cygwin (or other $(COMPILER))
-#	else
-#		$(info Cygwin 64 bit detected, installing modules if necessary.)
-#		lynx -source rawgit.com/transcode-open/apt-cyg/master/apt-cyg > apt-cyg
-#		install apt-cyg /bin
-#		rm -f apt-cyg
-#		apt-cyg install git gcc-g++
+	#You have to manually install git and gcc-g++ on Cygwin 32bit
 else
 	$(info Debian detected, installing modules if necessary.)
 	apt-get install -y git $(COMPILER) libboost-all-dev
@@ -47,7 +72,7 @@ endif
 	cd gmp-$(GMP_V) && ./configure
 	cd gmp-$(GMP_V) && make
 	cd gmp-$(GMP_V) && make install
-	#cd gmp-$(GMP_V) && make check
+	cd gmp-$(GMP_V) && make check
 	rm -fr gmp-$(GMP_V)
 ifeq ($(shell uname -o),Cygwin)
 	if [ -d "/usr/x86_64-pc-cygwin/lib/" ]; then cp -f /usr/local/lib/libgmp.* /usr/x86_64-pc-cygwin/lib/; fi
@@ -60,7 +85,7 @@ ntl : ini gmp
 	wget http://www.shoup.net/ntl/ntl-$(NTL_V).tar.gz
 	tar xf ntl-$(NTL_V).tar.gz
 	rm -f ntl-$(NTL_V).tar.gz
-	#CFLAGS="-O2 -m64"
+	#cd ntl-$(NTL_V)/src && ./configure NTL_GMP_LIP=on CFLAGS="-O2 -m64"
 	cd ntl-$(NTL_V)/src && ./configure NTL_GMP_LIP=on
 	cd ntl-$(NTL_V)/src && make
 	cd ntl-$(NTL_V)/src && make install
@@ -75,55 +100,6 @@ endif
 	cd HElib/src && make
 	cd HElib/src && make check
 	cd HElib/src && make test
-	
-mkdir :
-	mkdir -p objects
-	
-objects/he.o : src/he.cpp src/he.h
-	$(info )
-	$(info Building he.o...)
-	$(COMPILER) -std=c++11 -c src/he.cpp -I HElib/src -o objects/he.o
-
-objects/helper_functions.o : src/helper_functions.cpp src/helper_functions.h
-	$(info )
-	$(info Building helper_functions.o...)
-	$(COMPILER) -std=c++11 -c src/helper_functions.cpp -o objects/helper_functions.o
-	
-objects/test_gates.o : src/TEST_GATES.cpp src/TEST_GATES.h
-	$(info )
-	$(info Building test_gates.o...)
-	$(COMPILER) -std=c++11 -c src/TEST_GATES.cpp -I HElib/src -o objects/test_gates.o
-	
-objects/test_circ_comb.o : src/TEST_CIRC_COMB.cpp src/TEST_CIRC_COMB.h
-	$(info )
-	$(info Building test_circ_comb.o...)
-	$(COMPILER) -std=c++11 -c src/TEST_CIRC_COMB.cpp -I HElib/src -o objects/test_circ_comb.o
-	
-objects/test_circ_seq.o : src/TEST_CIRC_SEQ.cpp src/TEST_CIRC_SEQ.h
-	$(info )
-	$(info Building test_circ_seq.o...)
-	$(COMPILER) -std=c++11 -c src/TEST_CIRC_SEQ.cpp -I HElib/src -o objects/test_circ_seq.o
-	
-objects/test_circ_arithm.o : src/TEST_CIRC_ARITHM.cpp src/TEST_CIRC_ARITHM.h
-	$(info )
-	$(info Building test_circ_arithm.o...)
-	$(COMPILER) -std=c++11 -c src/TEST_CIRC_ARITHM.cpp -I HElib/src -o objects/test_circ_arithm.o
-	
-objects/main.o: src/main.cpp
-	$(info )
-	$(info Building main.o...)
-	$(COMPILER) -std=c++11 -c src/main.cpp -I HElib/src -o objects/main.o
-	
-hbc : mkdir objects/he.o objects/helper_functions.o \
-		objects/test_gates.o objects/test_circ_comb.o objects/test_circ_seq.o \
-		objects/test_circ_arithm.o \
-		objects/main.o
-	$(info )
-	$(info Building hbc...)
-	$(COMPILER) -std=c++11 objects/*.o HElib/src/fhe.a -o hbc -L/usr/local/lib -lntl -lgmp -lm
-	
-hbcNrun : hbc
-	./hbc
 	
 clean :
 	rm -fr objects *.exe *.o

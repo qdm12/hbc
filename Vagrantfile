@@ -13,7 +13,7 @@ Vagrant.configure(2) do |config|
   config.vm.hostname = "hbc-hostname"
   config.vm.provision "shell", inline: <<-SHELL
     sudo apt-get update
-    sudo apt-get install -y git g++ m4 perl htop libboost-all-dev lzip
+    sudo apt-get install -y git g++ lzip m4 perl libboost-all-dev htop 
     sudo apt-get -y autoremove
       
     #Installing GMP
@@ -24,7 +24,7 @@ Vagrant.configure(2) do |config|
     ./configure
     make
     make install
-    #make check
+    make check
     rm -fr gmp-$GMP_V*
     unset GMP_V
     
