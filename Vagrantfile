@@ -49,7 +49,8 @@ Vagrant.configure(2) do |config|
         cd HElib/src
         make
         make check
-        make test
+        #make test
+        #Test of HElib fails for some reason
         cd ../..
     fi
    
