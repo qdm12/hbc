@@ -2,7 +2,7 @@
 
 _This project was developed as my Master final year project at Imperial College London._
 
-_This project is still maintained by Quentin McGaw quentin . mcgaw at gmail . com_
+_This project is still maintained by Quentin McGaw (email: quentin . mcgaw at gmail . com)_
 
 ## 1. What is it, in *one* line?
 It is an **API** of homomorphic binary operations such as binary comparison or binary Euclidian division using the library _HElib_.
@@ -27,9 +27,7 @@ It is an **API** of homomorphic binary operations such as binary comparison or b
     - A Linux/Windows/OSX computer
     - At least 3GB of RAM and 2 CPU cores
     - An internet connection
-- In terms of software:
-
-![hbc dependencies diagram](/docs/dependencies.jpg)
+- In terms of software: ![hbc dependencies diagram](/docs/dependencies.jpg)
 
 ## 5. Documentation
 - This readme file
