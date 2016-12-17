@@ -1,25 +1,47 @@
 # Homomorphic binary circuits - _hbc_
 
 _This project was developed as my Master final year project at Imperial College London._
-_This project is still maintained by Quentin McGaw quentin . mcgaw at gmail . com
 
-## What is it, in **one** line?
-It is an **API** of homomorphic binary operations such as binary comparisons or binary divisions using the library _HElib_.
+_This project is still maintained by Quentin McGaw quentin . mcgaw at gmail . com_
 
-## What is in there?
-The core API is in the file _he.cpp_, the main code is in _main.cpp_, some other classes are in *helper_functions.cpp* and the rest are unit tests and timing tests for the homomorphic binary operations implemented. There is a _makefile_ to setup everything. My report is there to server as documentation for instance.
+## 1. What is it, in *one* line?
+It is an **API** of homomorphic binary operations such as binary comparison or binary Euclidian division using the library _HElib_.
 
-## What does it run ?
-By default, it runs a set of unit tests on all the circuits implemented (initiated from _main.cpp_).
-You can change the tests, or _main.cpp_ or whatever and it should still work.
+## 2. What is in there?
+- The **core API** is in *src/he.cpp*.
+- The code that is ran as an **example** is in *src/main.cpp*.
+- Some other classes are in *src/helper_functions.cpp*
+- All the other src files are **unit tests** and timing tests for the homomorphic binary operations implemented in *src/he.cpp*.
+- There is a **Vagrantfile** to setup eveything for you, cross-platform.
+- There is a **makefile** to build *hbc* or setup almost everything for you (depending on your OS).
+- There is this complete, detailed and updated **README.md** file.
+- There are links in this readme to my **presentation** (VERY USEFUL) and my detailed report (WAY TOO LONG).
 
-## Documentation
-- *Presentation* available [here](https://www.dropbox.com/s/scrwpum0avtqxuw/Presentation.pptx?dl=1)
+## 3. What does it run ?
+- It runs the code in *main.cpp* which execute the unit tests on all the homomorphic circuits implemented.
+- You can change the main.cpp with your code by inspiring from the tests.
+- You can also add circuits in *he.cpp* and then add corresponding tests, and **tell me** you want to contribute !
+
+## 4. What does it require ?
+- Practically:
+    - A Linux/Windows/OSX computer
+    - At least 3GB of RAM and 2 CPU cores
+    - An internet connection
+- In terms of software:
+
+![hbc dependencies diagram](/docs/dependencies.jpg)
+
+## 5. Documentation
+- This readme file
+- **Presentation** available [here](https://www.dropbox.com/s/scrwpum0avtqxuw/Presentation.pptx?dl=1)
 - Report available [here](https://www.dropbox.com/s/rqnrslzb1pstkq0/FYP%20report%20-%20Homomorphic%20encryption%20Cryptography%20for%20cloud%20computing%20-%20Quentin%20McGaw%20qdm12%202016.pdf?dl=1)
 - Comments in the source code, especially in _he.cpp_
 
-## How do I run it?
-### Using Vagrant (easiest, compatible with all, most flexible)
+## 6. Abstract ##
+This project concerns the research and development of a real-use application of homomorphic encryption for cloud computing. The application takes advantage of the various possibilities and limitations of present homomorphic encryption schemes and programming libraries to remain usable in terms of time. The foundations of the application rely on the design of binary operations using homomorphic encryption. All the binary logic gates and various binary blocks were developed and adapted to provide enough functionalities to the application. The project focuses on providing features to cloud computing such as calculating averages on large amounts of encrypted numbers in a relatively short and decent time. The result is an application program interface written in C++ allowing to perform various operations on integers. It thus shows homomorphic encryption can be used today for simple operations if the security is more important than the speed of execution. 
+
+## 7. How do I run it?
+### 7.1 Using Vagrant (easiest, compatible with all, most flexible)
 1. Install git on your computer
     - `apt-get install -y git` for Linux machines
     - or download it from [git-scm.com/downloads](https://git-scm.com/downloads)
@@ -44,8 +66,7 @@ This basically launches an Ubuntu-based virtual machine with only what is necess
     - Enter `vagrant halt` to shutdown the machine. Or enter `vagrant destroy` to delete the machine.
 12. To log back in, enter `vagrant up` and it should take about 30 seconds ! (except if you destroy the machine)
 
-
-### Using more manual ways, which don't work for all OSes
+### 7.2 Using more manual ways, which don't work for all OSes
 1. Make sure you have installed **make**
 2. Run the makefile or your terminal as **root** or **administrator**.
 3. Setup the necessary libraries
@@ -159,34 +180,24 @@ This basically launches an Ubuntu-based virtual machine with only what is necess
       host terminals and run hbc (provided you have enough ram to run both obviously).
 
 
-## Remove and uninstall ##
-### With Vagrant
+## 8. Remove and uninstall ##
+### 8.1 With Vagrant
 Just enter `vagrant destroy` from your host machine in the working directory
 
-### With Cygwin 32 bit
+### 8.2 With Cygwin 32 bit
 Use the makefile and run `make deepclean` which uninstalls and delete:
 - hbc
 - HElib, NTL, GMP
 - perl, m4, git, gcc-g++ and libboost-devel and purge them.
 Only the makefile will remain in the folder.
 
-### With Debian
+### 8.3 With Debian
 Use the makefile and run `make deepclean` which uninstalls and delete:
 - hbc
 - HElib, NTL, GMP
 - git, g++, perl, m4, git, gcc-g++, libboost-all-dev and libboost-dev and purge them.
 
-
-## Contribution
-You're welcome to contribute to this repository if you find any better circuits or other circuits and implement them !
-Just send me an email (see my address at the start) and I will add you as a contributor.
-Don't hesitate to contact me if you have any question as well.
-
-## Abstract ##
-This project concerns the research and development of a real-use application of homomorphic encryption for cloud computing. The application takes advantage of the various possibilities and limitations of present homomorphic encryption schemes and programming libraries to remain usable in terms of time. The foundations of the application rely on the design of binary operations using homomorphic encryption. All the binary logic gates and various binary blocks were developed and adapted to provide enough functionalities to the application. The project focuses on providing features to cloud computing such as calculating averages on large amounts of encrypted numbers in a relatively short and decent time. The result is an application program interface written in C++ allowing to perform various operations on integers. It thus shows homomorphic encryption can be used today for simple operations if the security is more important than the speed of execution. 
-
-
-### Acknowledgements ###
+## 9. Acknowledgements ##
 Credits to **Shai Halevi** for HElib obviously and thanks for the quick help tips in the Issues section!
 
 Thanks to **Dr. Wei Dai** (Imperial College London) for introducing me to homomorphic encryption
@@ -199,7 +210,15 @@ Thanks to **Wei Dai** from the Vernam Group at Worcester Polytechnic Institute f
 
 Thanks to **my dad**, **mother** and **step-mother** for their continuous support throughout my studies.
 
-#### New ideas which crossed my mind ####
+
+## 10. Contribution
+You're welcome to contribute to this repository if you find any better circuits or other circuits and implement them !
+
+Just send me an email (see my address at the start) and I will add you as a contributor.
+
+Don't hesitate to contact me if you have any question as well.
+
+## 11. Future Work (ideas crossing my mind) ####
 - Use *= instead of multiplyBy when the level is very low as it is faster. multiplyBy uses relinearization which serves to reduce the size of ciphertexts. This is great for complex circuits but takes a longer time than *= for simple circuits.
-- Add circuits from [here](http://www.aoki.ecei.tohoku.ac.jp/arith/mg/algorithm.html) to the core API
+- Add circuits from [here](http://www.aoki.ecei.tohoku.ac.jp/arith/mg/algorithm.html) to the core API *he.cpp*.
 - Other ideas are in chapter 9: _Future work_ of my report.
