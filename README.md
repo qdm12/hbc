@@ -8,6 +8,7 @@ _This project is still maintained by Quentin McGaw (email: quentin . mcgaw at gm
 It is an **API** of homomorphic binary operations such as binary comparison or binary Euclidian division using the library _HElib_.
 
 ## 2. What is in there?
+- It is written in C++ and is cross-platform with Vagrant
 - The **core API** is in *src/he.cpp*.
 - The code that is ran as an **example** is in *src/main.cpp*.
 - Some other classes are in *src/helper_functions.cpp*
@@ -68,14 +69,9 @@ This basically launches an Ubuntu-based virtual machine with only what is necess
 1. Make sure you have installed **make**
 2. Run the makefile or your terminal as **root** or **administrator**.
 3. Setup the necessary libraries
-    - With the Makefile provided (*only works for **Cygwin 32 bit** and **Debian** *)
-        - Cygwin 32 bit
-            1. Manually install git and gcc-g++ (Windows restrictions)
-            2. Note: *apt-cyg, m4, perl, gmp and ntl* will be installed automatically*.
-            3. Enter `make HElib` in a terminal in the *hbc* directory.
-        - Debian
-            1. Note: *git, g++, m4, perl, gmp and ntl* will be installed automatically*.
-            2. Enter `make HElib` in a terminal in the *hbc* directory.
+    - With the Makefile provided (should work for both Debian and Ubuntu)
+        1. Note: *git, g++, m4, perl, gmp and ntl* will be installed automatically*.
+        2. Enter `make HElib` in a terminal in the *hbc* directory.
     - Manually (if Vagrant and Makefile are not good for you)
         - Mac OSX
             1. Install Xcode manually or with `xcode-select --install`
@@ -119,34 +115,12 @@ This basically launches an Ubuntu-based virtual machine with only what is necess
             17. Build it with `make`
             18. *Optionally*, check it with `make check` and test it with `make test`.
             19. Go back to the working directory with `cd ../..`
-        - Cygwin 32 bit
-            1. Install apt-cyg with 
-            2. Manually install git and gcc-g++ (and make) with the Cygwin installer.
-            3. Install the libaries with `apt-cyg install git g++ m4 perl libboost-devel`
-            4. Download GMP with `wget https://gmplib.org/download/gmp/gmp-6.1.2.tar.bz2`
-            5. Extract it and go to its directory with `tar -xvjf gmp-6.1.2.tar.bz2 && cd gmp-6.1.2`
-            6. Configure it with `./configure`
-            7. Build it with `make`
-            6. Install it with `make install`
-            7. *Optionally*, check it with `make check`
-            8. Enter `cp -f /usr/local/lib/libgmp.* /usr/**XXXXX**-pc-cygwin/lib/` where **XXXXX** is your CPU architecture.
-            9. Go back and remove used files with `cd .. && rm -fr gmp-6.1.2*`
-            10. Download NTL with `wget http://www.shoup.net/ntl/ntl-9.9.1.tar.gz`
-            11. Extract it and go to its src directory with `tar -xvzf ntl-9.9.1.tar.gz && cd ntl-9.9.1/src`
-            12. Configure it with `./configure NTL_GMP_LIP=on`
-            13. Build it with `make`
-            14. Install it with `make install`
-            15. Go back and remove used files with `cd ../.. && rm -fr ntl-9.9.1*`
-            16. Clone HElib with with `git clone https://github.com/shaih/HElib.git`
-            17. Enter `sed -i -- 's/_B/_B_/g' HElib/src/Test_Replicate.cpp` or there will be a compile error.
-            18. Go to its src directory `cd HElib/src`
-            19. Build it with `make`
-            20. *Optionally*, check it with `make check` and test it with `make test`.
-            21. Go back to the working directory with `cd ../..`
+        - Cygwin 32 bit and 64 bit
+            1. It will not work for mysterious reasons, sorry ! Use Vagrant !
 4. Build hbc
     - With the Makefile provided (compatible will **all** platforms).
         1. Build it with `make hbc`
-    - Manually
+    - Manually (Works on everything, even Cygwin)
         1. Create the directory objects `mkdir -p objects`
         2. Compile the API `g++ -c src/he.cpp -I HElib/src -o objects/he.o`
         3. Compile the helper functions `g++ -c src/helper_functions.cpp -o objects/helper_functions.o`
@@ -182,18 +156,13 @@ This basically launches an Ubuntu-based virtual machine with only what is necess
 ### 8.1 With Vagrant
 Just enter `vagrant destroy` from your host machine in the working directory
 
-### 8.2 With Cygwin 32 bit
+### 8.2 With Debian and Ubuntu
 Use the makefile and run `make deepclean` which uninstalls and delete:
 - hbc
 - HElib, NTL, GMP
-- perl, m4, git, gcc-g++ and libboost-devel and purge them.
+- perl, m4, git, gcc-g++ and libboost-all-dev and purge them.
 Only the makefile will remain in the folder.
 
-### 8.3 With Debian
-Use the makefile and run `make deepclean` which uninstalls and delete:
-- hbc
-- HElib, NTL, GMP
-- git, g++, perl, m4, git, gcc-g++, libboost-all-dev and libboost-dev and purge them.
 
 ## 9. Acknowledgements ##
 Credits to **Shai Halevi** for HElib obviously and thanks for the quick help tips in the Issues section!
@@ -215,6 +184,7 @@ You're welcome to contribute to this repository if you find any better circuits 
 Just send me an email (see my address at the start) and I will add you as a contributor.
 
 Don't hesitate to contact me if you have any question as well.
+
 
 ## 11. Future Work (ideas crossing my mind) ####
 - Use *= instead of multiplyBy when the level is very low as it is faster. multiplyBy uses relinearization which serves to reduce the size of ciphertexts. This is great for complex circuits but takes a longer time than *= for simple circuits.

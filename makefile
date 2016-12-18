@@ -38,33 +38,13 @@ hbcNrun : hbc
 	./hbc
 	
 ini :
-	$(info Checking pre-requisites...)
-ifeq ($(shell uname -o),Cygwin)
-	$(info Cygwin 32 bit detected, installing modules if necessary.)
-	lynx -source rawgit.com/transcode-open/apt-cyg/master/apt-cyg > apt-cyg
-	install apt-cyg /bin
-	rm -f apt-cyg
-	apt-cyg install libboost-devel
-	#You have to manually install git and gcc-g++ on Cygwin 32bit
-else
-	$(info Debian detected, installing modules if necessary.)
+	sudo apt-get install -y git $(COMPILER) libboost-all-dev
 	apt-get install -y git $(COMPILER) libboost-all-dev
-endif
-	$(info = = = = = = = = = = = = = = = =)
-	$(info All pre-requisites modules are installed.)
-	$(info = = = = = = = = = = = = = = = =)
 
 gmp : ini
 	$(info Installing GMP...)
-	$(info Installing pre-requisites M4 and perl)
-ifeq ($(shell uname -o),Cygwin)
-	$(info Cygwin detected, installing modules if necessary.)
-	apt-cyg install m4 perl
-else
-	$(info Debian detected, installing modules if necessary.)
+	sudo apt-get install -y m4 perl
 	apt-get install -y m4 perl
-endif
-	$(info M4 and Perl are installed.)
 	wget https://gmplib.org/download/gmp/gmp-$(GMP_V).tar.bz2
 	tar -xvjf gmp-$(GMP_V).tar.bz2
 	#cd gmp-$(GMP_V) && ./configure ABI=64
@@ -72,12 +52,7 @@ endif
 	cd gmp-$(GMP_V) && make
 	cd gmp-$(GMP_V) && make install
 	cd gmp-$(GMP_V) && make check
-	rm -fr gmp-$(GMP_V)*
-ifeq ($(shell uname -o),Cygwin)
-	if [ -d "/usr/x86_64-pc-cygwin/lib/" ]; then cp -f /usr/local/lib/libgmp.* /usr/x86_64-pc-cygwin/lib/; fi
-	if [ -d "/usr/i686-pc-cygwin/lib/" ]; then cp -f /usr/local/lib/libgmp.* /usr/i686-pc-cygwin/lib/; fi
-endif
-	
+	rm -fr gmp-$(GMP_V)*	
 
 ntl : ini gmp
 	$(info Installing NTL...)
@@ -89,12 +64,9 @@ ntl : ini gmp
 	cd ntl-$(NTL_V)/src && make install
 	rm -fr ntl-$(NTL_V)*
 	
-HElib : ntl gmp
+HElib : gmp ntl
 	$(info Installing HELib...)
-	git clone https://github.com/shaih/HElib.git
-ifeq ($(shell uname -o),Cygwin)
-	sed -i -- 's/_B/_B_/g' HElib/src/Test_Replicate.cpp
-endif
+	if [ ! -d "HElib" ]; then git clone https://github.com/shaih/HElib.git; fi
 	cd HElib/src && make
 	cd HElib/src && make check
 	cd HElib/src && make test
@@ -104,31 +76,16 @@ clean :
 	
 deepclean :
 	$(info Cleaning up everything !)
-ifeq ($(shell uname -o),Cygwin)
-	$(info Cygwin detected, uninstalling static GMP and NTL.)
-	rm -f /usr/x86_64-pc-cygwin/lib/libgmp.*
-	rm -f /usr/i686-pc-cygwin/lib/libgmp.*
-endif
 	rm -fr /usr/local/include/NTL
 	rm -f /usr/local/include/gmp.h
 	rm -f /usr/local/lib/libgmp.*
 	rm -f /usr/local/lib/libntl.*
 	rm -fr HElib
-	$(info ...Removed GMP, NTL, HELib)
-ifeq ($(shell uname -o),Cygwin)
-	lynx -source rawgit.com/transcode-open/apt-cyg/master/apt-cyg > apt-cyg
-	install apt-cyg /bin
-	rm -f apt-cyg
-	apt-cyg remove --purge perl m4 git gcc-g++ libboost-devel
-	$(info ...Removed perl m4 git gcc-g++ from CYGWIN)
-else
-	apt-get remove -y --purge perl git $(COMPILER) libboost-all-dev libboost-dev
-endif
+	apt-get remove -y --purge perl git $(COMPILER) libboost-all-dev
 
 help : 
 	@echo make hbc - Compiles the project source code into an executable "hbc"
 	@echo make hbcNrun - Compiles the project source code and runs it.
-	@echo WARNING Only use the following commands out of Vagrant
-	@echo make HElib - Downloads HElib and other libraries and installs them
+	@echo make HElib - Downloads HElib and other libraries and installs them (alreaduy done in Vagrant)
 	@echo make clean - Removes all executables .exe and objects .o
 	@echo make deepclean - Removes all the libraries and packages installed. BE CAUTIOUS!
