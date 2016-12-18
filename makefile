@@ -68,8 +68,8 @@ HElib : gmp ntl
 	$(info Installing HELib...)
 	if [ ! -d "HElib" ]; then git clone https://github.com/shaih/HElib.git; fi
 	cd HElib/src && make
-	cd HElib/src && make check
-	cd HElib/src && make test
+	#cd HElib/src && make check
+	#cd HElib/src && make test
 	
 clean :
 	rm -fr objects *.exe *.o
