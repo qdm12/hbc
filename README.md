@@ -28,6 +28,7 @@ It is an **API** of homomorphic binary operations such as binary comparison or b
     - A Linux/Windows/OSX computer
     - At least 3GB of RAM and 2 CPU cores
     - An internet connection
+    - CPU with Hardware virtualization tech (you probably have it don't worry)
 - In terms of software: ![hbc dependencies diagram](/docs/dependencies.jpg)
 
 ## 5. Documentation
@@ -44,6 +45,7 @@ This project concerns the research and development of a real-use application of 
 1. Install git on your computer
     - `apt-get install -y git` for Linux machines
     - or download it from [git-scm.com/downloads](https://git-scm.com/downloads)
+2. On Windows, have an ssh client or add the **ssh.exe** of `C:\Program Files\Git\usr\bin` to your environment path
 2. Install Virtual Box from [virtualbox.org/wiki/Downloads](https://www.virtualbox.org/wiki/Downloads)
 3. Install Vagrant from [vagrantup.com/downloads.html](https://www.vagrantup.com/downloads.html)
 4. Open a terminal and enter `git clone https://github.com/qdm12/hbc.git`
@@ -51,6 +53,8 @@ This project concerns the research and development of a real-use application of 
 6. Enter `vagrant up` to launch the virtual machine which will setup and build everything for you. 
 This takes about 30 minutes the first time, depending on your connection speed and CPU.
 This basically launches an Ubuntu-based virtual machine with only what is necessary for this project.
+**WARNING:** If you do not have hardware virtualization, you can still run it but you have to change *trusty64*
+ to *trusty32* and *vb.cpus = 2* to *vb.cpus = 1*.
 7. Once vagrant up has completed, enter `vagrant ssh` to log in the virtual machine.
 8. The working directory *hbc* on your host machine is shared with the virtual machine at `/vagrant`.
 9. In the virtual machine, enter `cd /vagrant`.
