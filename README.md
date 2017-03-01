@@ -33,8 +33,9 @@ It is an **API** of homomorphic binary operations such as binary comparison or b
 
 ## 5. Documentation
 - This readme file
-- **Presentation** available [here](https://www.dropbox.com/s/scrwpum0avtqxuw/Presentation.pptx?dl=1)
-- Report available [here](https://www.dropbox.com/s/rqnrslzb1pstkq0/FYP%20report%20-%20Homomorphic%20encryption%20Cryptography%20for%20cloud%20computing%20-%20Quentin%20McGaw%20qdm12%202016.pdf?dl=1)
+- **Presentation** available on [Dropbox](https://www.dropbox.com/s/scrwpum0avtqxuw/Presentation.pptx?dl=1)
+- Report available on [Github](https://github.com/qdm12/PersonalWebsite/blob/master/documents/Homomorphic%20encryption%20Cryptography%20for%20cloud%20computing%20report.pdf)
+  or on [Dropbox](https://www.dropbox.com/s/rqnrslzb1pstkq0/FYP%20report%20-%20Homomorphic%20encryption%20Cryptography%20for%20cloud%20computing%20-%20Quentin%20McGaw%20qdm12%202016.pdf?dl=1)
 - Comments in the source code, especially in _he.cpp_
 
 ## 6. Abstract ##
