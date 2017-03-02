@@ -33,7 +33,7 @@ It is an **API** of homomorphic binary operations such as binary comparison or b
 
 ## 5. Documentation
 - This readme file
-- **Presentation** available on [Dropbox][dropbox_pres] and on [Github][github_pres]
+- **Presentation** available on [Dropbox][dropbox_pres], on [Github][github_pres] and on [Youtube](https://www.youtube.com/watch?v=n-adgQWZYxI) where I present it.
 - Report available on [Github][github_report] or on [Dropbox][dropbox_report]
 - Comments in the source code, especially in _he.cpp_
 
@@ -59,8 +59,8 @@ This basically launches an Ubuntu-based virtual machine with only what is necess
 8. The working directory *hbc* on your host machine is shared with the virtual machine at `/vagrant`.
 9. In the virtual machine, enter `cd /vagrant`.
 10. What's nice then:
-    - You can modify the files on your host machine (like Windows
-    - Changes you make are automatically reflected in the virtual machine.
+    - You can modify the files on your host machine (like Windows etc.)
+    - Changes you make are automatically reflected in the Ubuntu-based virtual machine.
     - Compile hbc again with `make hbc` in the virtual machine.
     - Run hbc with ./hbc from the virtual machine or your host machine.
     - **Note:** *You can use `make hbcNrun` to build and automatically run the main.cpp code.
@@ -197,6 +197,7 @@ Don't hesitate to contact me if you have any question as well.
 
 [dependencies_jpg]: /docs/dependencies.jpg
 [dropbox_pres]: https://www.dropbox.com/s/scrwpum0avtqxuw/Presentation.pptx?dl=1
-[dropbox_report]: https://www.dropbox.com/s/rqnrslzb1pstkq0/FYP%20report%20-%20Homomorphic%20encryption%20Cryptography%20for%20cloud%20computing%20-%20Quentin%20McGaw%20qdm12%202016.pdf?dl=1
 [github_pres]: /docs/Homomorphic%20encryption%20Cryptography%20for%20cloud%20computing%20presentation.pptx
+[youtube_pres]: https://www.youtube.com/watch?v=n-adgQWZYxI
+[dropbox_report]: https://www.dropbox.com/s/rqnrslzb1pstkq0/FYP%20report%20-%20Homomorphic%20encryption%20Cryptography%20for%20cloud%20computing%20-%20Quentin%20McGaw%20qdm12%202016.pdf?dl=1
 [github_report]: /docs/Homomorphic%20encryption%20Cryptography%20for%20cloud%20computing%20report.pdf
