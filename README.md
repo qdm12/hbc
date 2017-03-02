@@ -1,8 +1,8 @@
 # Homomorphic binary circuits - _hbc_
 
-_This project was developed as my Master final year project at Imperial College London._
+*This project was developed as my Master final year project at Imperial College London.*
 
-_This project is still maintained by Quentin McGaw (email: quentin . mcgaw at gmail . com)_
+*This project is still maintained by Quentin McGaw (email: quentin . mcgaw at gmail . com)*
 
 ## 1. What is it, in *one* line?
 It is an **API** of homomorphic binary operations such as binary comparison or binary Euclidian division using the library _HElib_.
@@ -29,13 +29,12 @@ It is an **API** of homomorphic binary operations such as binary comparison or b
     - At least 3GB of RAM and 2 CPU cores
     - An internet connection
     - CPU with Hardware virtualization tech (you probably have it don't worry)
-- In terms of software: ![hbc dependencies diagram](/docs/dependencies.jpg)
+- In terms of software (although this is automatically installed): ![hbc dependencies diagram][dependencies_jpg]
 
 ## 5. Documentation
 - This readme file
-- **Presentation** available on [Dropbox](https://www.dropbox.com/s/scrwpum0avtqxuw/Presentation.pptx?dl=1)
-- Report available on [Github](https://github.com/qdm12/PersonalWebsite/blob/master/documents/Homomorphic%20encryption%20Cryptography%20for%20cloud%20computing%20report.pdf)
-  or on [Dropbox](https://www.dropbox.com/s/rqnrslzb1pstkq0/FYP%20report%20-%20Homomorphic%20encryption%20Cryptography%20for%20cloud%20computing%20-%20Quentin%20McGaw%20qdm12%202016.pdf?dl=1)
+- **Presentation** available on [Dropbox][dropbox_pres] and on [Github][github_pres]
+- Report available on [Github][github_report] or on [Dropbox][dropbox_report]
 - Comments in the source code, especially in _he.cpp_
 
 ## 6. Abstract ##
@@ -195,3 +194,9 @@ Don't hesitate to contact me if you have any question as well.
 - Use *= instead of multiplyBy when the level is very low as it is faster. multiplyBy uses relinearization which serves to reduce the size of ciphertexts. This is great for complex circuits but takes a longer time than *= for simple circuits.
 - Add circuits from [here](http://www.aoki.ecei.tohoku.ac.jp/arith/mg/algorithm.html) to the core API *he.cpp*.
 - Other ideas are in chapter 9: _Future work_ of my report.
+
+[dependencies_jpg]: /docs/dependencies.jpg
+[dropbox_pres]: https://www.dropbox.com/s/scrwpum0avtqxuw/Presentation.pptx?dl=1
+[dropbox_report]: https://www.dropbox.com/s/rqnrslzb1pstkq0/FYP%20report%20-%20Homomorphic%20encryption%20Cryptography%20for%20cloud%20computing%20-%20Quentin%20McGaw%20qdm12%202016.pdf?dl=1
+[github_pres]: /docs/Homomorphic%20encryption%20Cryptography%20for%20cloud%20computing%20presentation.pptx
+[github_report]: /docs/Homomorphic%20encryption%20Cryptography%20for%20cloud%20computing%20report.pdf
