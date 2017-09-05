@@ -87,9 +87,9 @@ This basically launches an Ubuntu-based virtual machine with only what is necess
 
 ### 7.2 Using more manual ways, which don't work for all OSes
 1. Make sure you have installed **make**
-2. Run the makefile or your terminal as **root** or **administrator**.
+2. Open a terminal as **root** or **administrator** ideally
 3. Setup the necessary libraries
-    - With the Makefile provided (should work for both Debian and Ubuntu)
+    - With the Makefile provided (only works for **Debian** and **Ubuntu**)
         1. Note: *git, g++, m4, perl, gmp and ntl* will be installed automatically*.
         2. Enter `make HElib` in a terminal in the *hbc* directory.
     - Manually (if Vagrant and Makefile are not good for you)
@@ -185,23 +185,23 @@ This basically launches an Ubuntu-based virtual machine with only what is necess
     - You can also build it and run the new build with `make hbcNrun`
 
 	
-## 8. RAM considerations **IMPORTANT**
-    - To run the default hbc program, you need at least 3GB of RAM.
-    - This is because the average operation (arithmetic tests) uses about 2GB of RAM for 2 bits.
-    - Note that you can comment it out in the main.cpp or TEST_ARITHMETIC.cpp 
-      and stick to tests of simpler circuits such as the multiplication which 
-      only require about 0.7 - 1GB of RAM. 
-	- For **Vagrant**, you can modify the amount of RAM in the **vb.memory** field, 
-	  which is set to **2600MB** by default. To monitor the RAM usage, open a new 
-	  host terminal, go to the working directory and use `vagrant ssh -c htop`.
+## 8. RAM considerations IMPORTANT
+- To run the default hbc program, you need at least 3GB of RAM.
+- This is because the average operation (arithmetic tests) uses about 2GB of RAM for 2 bits.
+- Note that you can comment it out in the main.cpp or TEST_ARITHMETIC.cpp 
+  and stick to tests of simpler circuits such as the multiplication which 
+  only require about 0.7 - 1GB of RAM. 
+- For **Vagrant**, you can modify the amount of RAM in the **vb.memory** field, 
+  which is set to **2600MB** by default. To monitor the RAM usage, open a new 
+  host terminal, go to the working directory and use `vagrant ssh -c htop`.
 
 	  
 ## 9. CPU considerations for Vagrant
-    - By default, the Vagrant VM uses 2 cores of your CPU (vb.cpus = 2) so that
-      you can run hbc and also monitor the RAM with another `vagrant ssh`.
-    - You can also run more instances of hbc if you have more than two cores available.
-      With Vagrant, just set vb.cpus to 3 for example, log in with `vagrant ssh` on different
-      host terminals and run hbc (provided you have enough RAM to run both obviously).
+- By default, the Vagrant VM uses 2 cores of your CPU (vb.cpus = 2) so that
+  you can run hbc and also monitor the RAM with another `vagrant ssh`.
+- You can also run more instances of hbc if you have more than two cores available.
+  With Vagrant, just set vb.cpus to 3 for example, log in with `vagrant ssh` on different
+  host terminals and run hbc (provided you have enough RAM to run both obviously).
 
 	  
 ## 10. Remove and uninstall ##
