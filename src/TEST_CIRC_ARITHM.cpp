@@ -57,7 +57,7 @@ bool TEST_CIRC_ARITHM::test_MULTIPLY(){
 
 		switch(bits){
 			case 2:
-				params.L = 8; //for 1024 slots
+				params.L = 9; //for 1024 slots
 				break;
 			case 3:
 				params.L = 13; //for 1024 slots

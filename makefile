@@ -1,8 +1,8 @@
 GMP_V = 6.1.2
-NTL_V = 9.9.1
+NTL_V = 10.5.0
 COMPILER = g++
 
-hbc : mkdir objects/he.o objects/helper_functions.o \
+hbc : createdirs objects/he.o objects/helper_functions.o \
 		objects/test_gates.o objects/test_circ_comb.o objects/test_circ_seq.o \
 		objects/test_circ_arithm.o \
 		objects/main.o
@@ -10,7 +10,7 @@ hbc : mkdir objects/he.o objects/helper_functions.o \
 	$(info Compiling hbc...)
 	$(COMPILER) -std=c++11 objects/*.o HElib/src/fhe.a -o hbc -L/usr/local/lib -lntl -lgmp -lm
 
-mkdir :
+createdirs :
 	mkdir -p objects
 	
 objects/he.o : src/he.cpp src/he.h
@@ -50,7 +50,7 @@ gmp : ini
 	#cd gmp-$(GMP_V) && ./configure ABI=64
 	cd gmp-$(GMP_V) && ./configure
 	cd gmp-$(GMP_V) && make
-	cd gmp-$(GMP_V) && make install
+	cd gmp-$(GMP_V) && sudo make install
 	cd gmp-$(GMP_V) && make check
 	rm -fr gmp-$(GMP_V)*	
 
@@ -61,7 +61,7 @@ ntl : ini gmp
 	#cd ntl-$(NTL_V)/src && ./configure NTL_GMP_LIP=on CFLAGS="-O2 -m64"
 	cd ntl-$(NTL_V)/src && ./configure NTL_GMP_LIP=on
 	cd ntl-$(NTL_V)/src && make
-	cd ntl-$(NTL_V)/src && make install
+	cd ntl-$(NTL_V)/src && sudo make install
 	rm -fr ntl-$(NTL_V)*
 	
 HElib : gmp ntl

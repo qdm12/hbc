@@ -23,20 +23,21 @@ Vagrant.configure(2) do |config|
     cd gmp-$GMP_V
     ./configure
     make
-    make install
+    sudo make install
     make check
+	cd ..
     rm -fr gmp-$GMP_V*
     unset GMP_V
     
     #Installing NTL
-    NTL_V=9.9.1
+    NTL_V=10.5.0
     wget http://www.shoup.net/ntl/ntl-$NTL_V.tar.gz
     tar -xvzf ntl-$NTL_V.tar.gz
     cd ntl-$NTL_V/src
     ./configure NTL_GMP_LIP=on
     make
-    make install
-    cd ..
+    sudo make install
+    cd ../..
     rm -fr ntl-$NTL_V*
     unset NTL_V
     
@@ -49,8 +50,8 @@ Vagrant.configure(2) do |config|
         cd HElib/src
         make
         #make check
+		#1 of the check of HElib fails for some reason
         #make test
-        #Test of HElib fails for some reason
         cd ../..
     fi
    
