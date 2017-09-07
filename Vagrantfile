@@ -11,54 +11,71 @@ Vagrant.configure(2) do |config|
     vb.name = "hbc-virtual-machine"
   end
   config.vm.hostname = "hbc-hostname"
-  config.vm.provision "shell", inline: <<-SHELL
+  
+  config.vm.provision :shell, :run => 'always', inline: <<-SHELL
+    echo " ===== HBC ===== Updating packages..."
     sudo apt-get update
     sudo apt-get install -y git g++ m4 perl libboost-all-dev htop 
     sudo apt-get -y autoremove
-      
+
     #Installing GMP
-    GMP_V=6.1.2
-    wget https://gmplib.org/download/gmp/gmp-$GMP_V.tar.bz2
-    tar -xvjf gmp-$GMP_V.tar.bz2
-    cd gmp-$GMP_V
-    ./configure
-    make
-    sudo make install
-    make check
-	cd ..
-    rm -fr gmp-$GMP_V*
-    unset GMP_V
+    if [ ! -f "/usr/local/lib/libgmp.a" ]; then
+        GMP_V=6.1.2
+        echo " ===== HBC ===== Installing GMP-$GMP_V..."
+        wget https://gmplib.org/download/gmp/gmp-$GMP_V.tar.bz2
+        tar -xvjf gmp-$GMP_V.tar.bz2
+        cd gmp-$GMP_V
+        ./configure
+        make
+        sudo make install
+        make check
+        cd ..
+        rm -fr gmp-$GMP_V*
+        unset GMP_V
+    else
+        echo " ===== HBC ===== GMP seems already installed. Skipping..."
+    fi
     
     #Installing NTL
-    NTL_V=10.5.0
-    wget http://www.shoup.net/ntl/ntl-$NTL_V.tar.gz
-    tar -xvzf ntl-$NTL_V.tar.gz
-    cd ntl-$NTL_V/src
-    ./configure NTL_GMP_LIP=on
-    make
-    sudo make install
-    cd ../..
-    rm -fr ntl-$NTL_V*
-    unset NTL_V
+    if [ ! -f "/usr/local/lib/libntl.a" ]; then
+        NTL_V=10.5.0
+        echo " ===== HBC ===== Installing NTL-$NTL_V..."
+        wget http://www.shoup.net/ntl/ntl-$NTL_V.tar.gz
+        tar -xvzf ntl-$NTL_V.tar.gz
+        cd ntl-$NTL_V/src
+        ./configure NTL_GMP_LIP=on
+        make
+        sudo make install
+        cd ../..
+        rm -fr ntl-$NTL_V*
+        unset NTL_V
+    else
+        echo " ===== HBC ===== NTL seems already installed. Skipping..."
+    fi
     
     #Installing HElib
     cd /vagrant
-    if [ ! -d "HElib/src" ]; then
-        echo "HElib/src not found; Building it again..."
-        #rm -fr HElib
-        git clone https://github.com/shaih/HElib.git
+    if [ ! -f "HElib/src/fhe.a" ]; then
+        if [ ! -d "HElib" ]; then
+            echo " ===== HBC ===== HElib not found; Downloading and building it..."
+            #rm -fr HElib
+            git clone https://github.com/shaih/HElib.git
+        else
+            echo " ===== HBC ===== HElib found but no compiled fhe.a found. Compiling it !"            
+        fi
         cd HElib/src
         make
         #make check
-		#1 of the check of HElib fails for some reason
+        #1 of the check of HElib fails for some reason
         #make test
         cd ../..
+    else
+        echo " ===== HBC ===== HElib is present and is assumed to be compiled."
     fi
    
     #Building hbc
     make hbc
-    echo "hbc was successfully built ! Run it with: cd /vagrant && ./hbc"
-    echo "colorscheme desert" > ~/.vimrc
+    echo " ===== HBC ===== hbc was successfully built ! Run it with: cd /vagrant && ./hbc"
   SHELL
 end
 

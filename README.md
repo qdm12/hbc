@@ -38,8 +38,8 @@ It is an **API** of homomorphic binary operations such as binary comparison or b
 
    | Program or Library | Requirement 1 | Requirement 2 | Requirement 3 | Requirement 4 | Requirement 5 | Requirement 6 |
    | ------------------ | ------------- | ------------- | ------------- | ------------- | ------------- | ------------- |
-   | hbc                | g++           | make          | HElib         | c++11         |
-   | HElib              | g++           | make          | git           | libboost      | GMP 6.1.2     |  NTL 10.5.0   |
+   | hbc                | g++           | make          | libboost      | c++11         | HElib         |
+   | HElib              | g++           | make          | git           | NTL 10.5.0    | GMP 6.1.2     |
    | NTL 10.5.0         | g++           | make          | GMP 6.1.2     |
    | GMP 6.1.2          | g++           | make          | m4            | perl          |
 
