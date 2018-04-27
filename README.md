@@ -65,6 +65,8 @@ Requirements:
 	
 ### 2.2. Vagrant
 
+![Docker](https://github.com/qdm12/hbc/raw/master/readme/vagrant.png)
+
 Requirements:
 - At least 3GB of RAM
 - An internet connection
