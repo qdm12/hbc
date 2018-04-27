@@ -1,4 +1,8 @@
 .gitignore
 .travis.yml
-.git/
+.git
 README.md
+_config.yml
+Vagrantfile
+readme
+docs
