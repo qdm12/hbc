@@ -4,3 +4,4 @@ objects
 hbc
 hbc.exe
 *.o
+_config.yml
