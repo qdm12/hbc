@@ -81,7 +81,7 @@ deepclean :
 	rm -f /usr/local/lib/libgmp.*
 	rm -f /usr/local/lib/libntl.*
 	rm -fr HElib
-	apt-get remove -y --purge perl git $(COMPILER) libboost-all-dev
+	rm -fr src
 
 help : 
 	@echo make hbc - Compiles the project source code into an executable "hbc"
