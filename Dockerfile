@@ -1,8 +1,8 @@
 FROM debian:stretch-slim
 LABEL maintainer="quentin.mcgaw@gmail.com" \
-      description="" \
-      download="MB" \
-      size="MB" \
+      description="Homomorphic binary operations such as binary comparisons or binary divisions using the library HElib" \
+      download="372.7MB" \
+      size="1230MB" \
       ram="Depends" \
       cpu_usage="Depends" \
       github="https://github.com/qdm12/hbc"
@@ -32,14 +32,23 @@ RUN GMP_V=6.1.2 && \
 	wget -q https://github.com/shaih/HElib/archive/master.tar.gz && \
 	tar -xzf master.tar.gz && \
 	rm master.tar.gz && \
-	mkdir -p /hbc/HElib/src /hbc/src /hbc/temp && \
-	mv HElib-master/src/* /hbc/HElib/src/ && \
-	rm -r HElib-master && \
-	cd /hbc/HElib/src && \
+	mkdir /HElibSrc && \
+	mv /HElib-master/src/* /HElibSrc/ && \
+	rm -r /HElib-master && \
+	cd /HElibSrc && \
 	make && \
 	make check && \
+	rm -rf Test_* *.o && \
 	apt-get remove wget ca-certificates bzip2 -qq > /dev/null && \
 	apt-get autoremove -qq > /dev/null && \ 
 	rm -rf /var/lib/apt/lists/*
-VOLUME /hbc/src
+VOLUME /hbc
 WORKDIR /hbc
+ENTRYPOINT rm -rf /hbc/HElib/src && \
+		   mkdir -p /hbc/HElib/src && \
+		   mv /HElibSrc/* /hbc/HElib/src/ && \
+		   make && \
+		   printf "\n\n === Build successful === \n\n" && \
+		   printf "\n 1) You can recompile your program with 'make'\n" && \
+		   printf "\n 2) Run your program with './hbc'\n\n" && \
+		   /bin/bash

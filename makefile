@@ -80,8 +80,7 @@ deepclean :
 	rm -f /usr/local/include/gmp.h
 	rm -f /usr/local/lib/libgmp.*
 	rm -f /usr/local/lib/libntl.*
-	rm -fr HElib
-	rm -fr src
+	rm -fr HElib src docs readme .dockerignore .gitignore .travis.yml README.md Dockerfile Vagrantfile
 
 help : 
 	@echo make hbc - Compiles the project source code into an executable "hbc"

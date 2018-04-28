@@ -3,5 +3,5 @@ services:
   - docker
 install:
   - docker build .
-#after_script:
-#  - "curl -X POST https://hooks.microbadger.com/images/qmcgaw/"
+after_script:
+  - "curl -X POST https://hooks.microbadger.com/images/qmcgaw/homomorphic-binary-circuits/5_ZQZ6uhRXvjJSJ9A6pWjfh0x2M="
