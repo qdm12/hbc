@@ -41,7 +41,5 @@ RUN GMP_V=6.1.2 && \
 	apt-get remove wget ca-certificates bzip2 -qq > /dev/null && \
 	apt-get autoremove -qq > /dev/null && \ 
 	rm -rf /var/lib/apt/lists/*
-COPY makefile /hbc/makefile
 VOLUME /hbc/src
 WORKDIR /hbc
-CMD make

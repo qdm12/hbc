@@ -17,7 +17,14 @@
 [![](https://images.microbadger.com/badges/image/qmcgaw/homomorphic-binary-circuits.svg)](https://microbadger.com/images/qmcgaw/homomorphic-binary-circuits)
 [![](https://images.microbadger.com/badges/version/qmcgaw/homomorphic-binary-circuits.svg)](https://microbadger.com/images/qmcgaw/homomorphic-binary-circuits)
 
-This project concerns the research and development of a real-use application of homomorphic encryption for cloud computing. The application takes advantage of the various possibilities and limitations of present homomorphic encryption schemes and programming libraries to remain usable in terms of time. The foundations of the application rely on the design of binary operations using homomorphic encryption. All the binary logic gates and various binary blocks were developed and adapted to provide enough functionalities to the application. The project focuses on providing features to cloud computing such as calculating averages on large amounts of encrypted numbers in a relatively short and decent time. The result is an application program interface written in C++ allowing to perform various operations on integers. It thus shows homomorphic encryption can be used today for simple operations if the security is more important than the speed of execution. 
+This project concerns the research and development of a real-use application of homomorphic encryption for cloud computing. 
+The application takes advantage of the various possibilities and limitations of present homomorphic encryption schemes and 
+programming libraries to remain usable in terms of time. The foundations of the application rely on the design of binary 
+operations using homomorphic encryption. All the binary logic gates and various binary blocks were developed and adapted 
+to provide enough functionalities to the application. The project focuses on providing features to cloud computing such as 
+calculating averages on large amounts of encrypted numbers in a relatively short and decent time. The result is an application 
+program interface written in C++ allowing to perform various operations on integers. It thus shows homomorphic encryption can 
+be used today for simple operations if the security is more important than the speed of execution. 
 
 - Written in C++
 - Cross-platform using either:
@@ -49,19 +56,21 @@ Requirements:
 - At least 3GB of RAM
 - An internet connection
 
-1. You need a Linux based machine, MacOS or Windows Enterprise for Docker
 1. Install Docker (from [here](https://www.docker.com/community-edition))
-1. Place the content of the `src/` directory from the hbc repository in `/yourpath` in example
+1. Place the src directory from the hbc repository in `/yoursrcpath` in example
+1. Place the *makefile* from the hbc repository in `/yourmakefilepath` in example
 1. Enter the following command in your terminal:
 
 	```bash
-	docker run -it --rm -v /yourpath:/hbc/src qmcgaw/homomorphic-binary-circuits
+	docker run -it --rm -v /yoursrcpath:/hbc/src -v /yourmakefilepath/makefile:/hbc/makefile qmcgaw/homomorphic-binary-circuits
 	```
 	
-	This will download the Docker image, mount the source files in the Docker container and make the hbc binary from 
-	the source files. You can then edit the source files and run `make` in the Docker container to re-build it.
+	This will download the Docker image and mount the makefile and source files in the Docker container.
 	
-	You should also run the executable in the Docker container with `/hbc/hbc`
+1. Edit the makefile and/or source files on your host machine
+1. Enter `make` in the Docker container to re-build the binary hbc
+1. Run the executable in the Docker container with `/hbc/hbc`
+1. To quit the Docker container and delete it, simply exit with `exit`
 	
 ### 2.2. Vagrant
 
